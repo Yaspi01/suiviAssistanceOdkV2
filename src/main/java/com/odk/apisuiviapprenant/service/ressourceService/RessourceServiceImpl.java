@@ -6,7 +6,13 @@ import com.odk.apisuiviapprenant.models.ressourceModel.Ressource;
 import com.odk.apisuiviapprenant.repositories.ressourceRepository.RessourceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.transaction.Transactional;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 
 @Service
@@ -35,9 +41,18 @@ public class RessourceServiceImpl implements RessourceService {
         return null;
     }
 
+    @Transactional
     @Override
-    public Ressource ressourceByPdf() {
-        return null;
+    public void ressourceByPdf(MultipartFile file) {
+        try {
+            if(file.isEmpty()){
+                throw new Exception("Ce fichier n'existe pas");
+            }
+            Path path = Paths.get("C:/Users/Yaspi/Desktop/Courses/spring/suiviAssistanceOdkV2/src/main/resources/files/"+file.getOriginalFilename());
+            Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override

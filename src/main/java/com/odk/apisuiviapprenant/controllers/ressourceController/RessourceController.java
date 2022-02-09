@@ -6,6 +6,7 @@ import com.odk.apisuiviapprenant.models.ressourceModel.Ressource;
 import com.odk.apisuiviapprenant.service.ressourceService.RessourceServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -30,5 +31,12 @@ public class RessourceController {
     @GetMapping("/ressourceByFormateur")
     List<Ressource> ressourceByFormateur(@RequestBody Formateur formateur){
         return ressourceService.ressourceByFormateur(formateur);
+    }
+
+    @PostMapping("/uploadRessource")
+    void uploadRessource(@RequestParam("file") MultipartFile file){
+        Ressource ressource = new Ressource();
+        ressource.setPdf(file.getOriginalFilename());
+        ressourceService.ressourceByPdf(file);
     }
 }

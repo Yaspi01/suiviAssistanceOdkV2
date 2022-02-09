@@ -24,4 +24,9 @@ public class FormateurController {
     List<Formateur> allFormateur(){
         return formateurService.allFormateur();
     }
+
+    @GetMapping("/login/{login}&{motDePass}")
+    Formateur connexion(@PathVariable("login") String login, @PathVariable("motDePass") String motDePass){
+        return formateurService.authentification(login, motDePass);
+    }
 }

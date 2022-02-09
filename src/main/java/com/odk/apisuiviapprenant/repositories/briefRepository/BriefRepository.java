@@ -8,6 +8,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface BriefRepository extends JpaRepository<Brief, Long> {
-    //@Query(value = "SELECT b FROM Brief WHERE b.apprenant = :apprenant")
+    @Query(value = "SELECT b FROM Brief b WHERE b.apprenant = :apprenant")
     List<Brief> findBriefByApprenant(@Param("b") String b);
 }

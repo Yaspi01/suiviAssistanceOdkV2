@@ -39,4 +39,14 @@ public class ApprenantController {
     Apprenant updateApprenant(@RequestBody Apprenant apprenant, @PathVariable("id") Long id){
         return apprenantService.updateApprenant(apprenant, id);
     }
+
+    @GetMapping("/login/{login}&{motDePass}")
+    Apprenant connexion(@PathVariable("login") String login, @PathVariable("motDePass") String motDePasse){
+        return apprenantService.authentification(login, motDePasse);
+    }
+
+    @DeleteMapping("restoreApprenant/{id}")
+    void restoreApprenant(@PathVariable("id") Long id){
+        apprenantService.restaureAppre(id);
+    }
 }

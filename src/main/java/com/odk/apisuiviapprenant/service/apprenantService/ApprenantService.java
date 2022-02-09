@@ -10,4 +10,6 @@ public interface ApprenantService {
     Apprenant apprenantById(Long id);
     void deleteApprenant(Long id);
     Apprenant updateApprenant(Apprenant apprenant, Long id);
+    Apprenant authentification(String login, String motDePasse);
+    void restaureAppre(Long id);
 }

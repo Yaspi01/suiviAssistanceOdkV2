@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -53,5 +54,26 @@ public class ApprenantServiceImpl implements ApprenantService{
         apprenantFound.setTelephone(apprenant.getTelephone());
         apprenantFound.setMotDePass(apprenant.getMotDePass());
         return apprenantRepository.save(apprenantFound);
+    }
+
+    @Override
+    public Apprenant authentification(String login, String motDePasse) {
+        Optional<Apprenant> connexion = apprenantRepository.findApprenantByLoginAndMotDePass(login, motDePasse);
+
+        if(connexion.isEmpty()){
+            throw new IllegalStateException("Login ou mot de passe incorrect");
+        }
+        if(connexion.get().getEtat() == Etat.Desactiver || connexion.get().isSupprimer()){
+            throw new IllegalStateException("Votre compte a été désactivé");
+        }
+        return connexion.get();
+    }
+
+    @Transactional
+    @Override
+    public void restaureAppre(Long id) {
+        Apprenant apprenant = apprenantRepository.getById(id);
+        apprenant.setEtat(Etat.Activer);
+        apprenant.setSupprimer(false);
     }
 }

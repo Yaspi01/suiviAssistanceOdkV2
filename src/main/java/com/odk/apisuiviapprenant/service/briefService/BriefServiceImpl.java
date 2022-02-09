@@ -27,4 +27,14 @@ public class BriefServiceImpl implements BriefService {
     public Brief briefById(Long id) {
         return briefRepository.findById(id).get();
     }
+
+    @Override
+    public List<Brief> findBriefByApprenant(String apprenant) {
+        return briefRepository.findBriefByApprenant(apprenant);
+    }
+
+    @Override
+    public List<Brief> findBriefByFormateur(String formateur) {
+        return briefRepository.findBriefByFormateur(formateur);
+    }
 }

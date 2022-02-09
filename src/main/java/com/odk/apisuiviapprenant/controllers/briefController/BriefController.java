@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin
 @RestController
@@ -29,4 +30,16 @@ public class BriefController {
     Brief briefById(@PathVariable("id")Long id){
         return briefService.briefById(id);
     }
+
+    @GetMapping("/findBriefByApprenant/{apprenant}")
+    List<Brief> findBriefByApprenant(@PathVariable("apprenant") String apprenant){
+        return briefService.findBriefByApprenant(apprenant);
+    }
+
+    @GetMapping("/findBriefByFormateur/{formateur}")
+    List<Brief> findBriefByFormateur(@PathVariable("formateur") String formateur){
+        return briefService.findBriefByApprenant(formateur);
+    }
+
+
 }

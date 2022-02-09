@@ -2,6 +2,7 @@ package com.odk.apisuiviapprenant.models.briefModel;
 
 import com.odk.apisuiviapprenant.models.apprenantModel.Apprenant;
 import com.odk.apisuiviapprenant.models.formateurModel.Formateur;
+import com.odk.apisuiviapprenant.models.renduModel.Rendu;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -25,6 +26,9 @@ public class Brief {
 
     @OneToOne
     private Apprenant apprenant;
+
+    @OneToOne(mappedBy = "brief")
+    private Rendu rendu;
     public Brief() {
     }
 
@@ -75,4 +79,6 @@ public class Brief {
     public void setFormateur(Formateur formateur) {
         this.formateur = formateur;
     }
+
+
 }

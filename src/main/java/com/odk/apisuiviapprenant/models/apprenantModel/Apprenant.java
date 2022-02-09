@@ -4,6 +4,7 @@ package com.odk.apisuiviapprenant.models.apprenantModel;
 import com.odk.apisuiviapprenant.Etat;
 import com.odk.apisuiviapprenant.models.briefModel.Brief;
 import com.odk.apisuiviapprenant.models.formateurModel.Formateur;
+import com.odk.apisuiviapprenant.models.renduModel.Rendu;
 import com.odk.apisuiviapprenant.models.ressourceModel.Ressource;
 
 import javax.persistence.*;
@@ -42,6 +43,10 @@ public class Apprenant {
 
     @OneToMany
     private List<Ressource> ressource;
+
+    @OneToMany
+    private List<Rendu> rendu;
+
     public Apprenant() {
     }
 

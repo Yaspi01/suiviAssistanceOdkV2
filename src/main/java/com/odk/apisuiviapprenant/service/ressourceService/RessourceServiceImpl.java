@@ -48,7 +48,7 @@ public class RessourceServiceImpl implements RessourceService {
             if(file.isEmpty()){
                 throw new Exception("Ce fichier n'existe pas");
             }
-            Path path = Paths.get("C:/Users/Yaspi/Desktop/Courses/spring/suiviAssistanceOdkV2/src/main/resources/files/"+file.getOriginalFilename());
+            Path path = Paths.get("src/main/resources/files/"+file.getOriginalFilename());
             Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
         }catch (Exception e){
             e.printStackTrace();

@@ -31,15 +31,11 @@ public class BriefController {
         return briefService.briefById(id);
     }
 
-    @GetMapping("/findBriefByApprenant/{apprenant}")
-    List<Brief> findBriefByApprenant(@PathVariable("apprenant") String apprenant){
-        return briefService.findBriefByApprenant(apprenant);
+    @GetMapping("/findBriefByApprenant/{id}")
+    List<Brief> findBriefByApprenant(@PathVariable("id") Long id){
+        return briefService.findBriefByApprenant(id);
     }
 
-    @GetMapping("/findBriefByFormateur/{formateur}")
-    List<Brief> findBriefByFormateur(@PathVariable("formateur") String formateur){
-        return briefService.findBriefByApprenant(formateur);
-    }
 
 
 }

@@ -5,7 +5,7 @@ import com.odk.apisuiviapprenant.Etat;
 import com.odk.apisuiviapprenant.Type;
 import com.odk.apisuiviapprenant.models.apprenantModel.Apprenant;
 import com.odk.apisuiviapprenant.models.briefModel.Brief;
-import com.odk.apisuiviapprenant.models.matiere.Matiere;
+import com.odk.apisuiviapprenant.models.matiereModel.Matiere;
 import com.odk.apisuiviapprenant.models.ressourceModel.Ressource;
 
 import javax.persistence.*;

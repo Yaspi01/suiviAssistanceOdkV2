@@ -3,6 +3,7 @@ package com.odk.apisuiviapprenant.models.apprenantModel;
 
 import com.odk.apisuiviapprenant.Etat;
 import com.odk.apisuiviapprenant.models.briefModel.Brief;
+import com.odk.apisuiviapprenant.models.evaluationModel.Evaluation;
 import com.odk.apisuiviapprenant.models.formateurModel.Formateur;
 import com.odk.apisuiviapprenant.models.renduModel.Rendu;
 import com.odk.apisuiviapprenant.models.ressourceModel.Ressource;
@@ -46,6 +47,9 @@ public class Apprenant {
 
     @OneToMany
     private List<Rendu> rendu;
+
+    @OneToMany
+    private List<Evaluation> evaluation;
 
     public Apprenant() {
     }

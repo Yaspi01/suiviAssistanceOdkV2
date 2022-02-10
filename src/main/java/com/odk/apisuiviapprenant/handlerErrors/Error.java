@@ -1,10 +1,12 @@
 package com.odk.apisuiviapprenant.handlerErrors;
 
 import com.odk.apisuiviapprenant.exception.ErrorCode;
+import lombok.Builder;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Builder
 public class Error {
 
     private Integer httpCode;
@@ -18,7 +20,6 @@ public class Error {
         this.message = message;
         this.errors = errors;
     }
-
     public Error() {
     }
 

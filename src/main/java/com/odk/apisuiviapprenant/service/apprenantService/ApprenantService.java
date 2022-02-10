@@ -12,4 +12,5 @@ public interface ApprenantService {
     Apprenant updateApprenant(Apprenant apprenant, Long id);
     Apprenant authentification(String login, String motDePasse);
     void restaureAppre(Long id);
+
 }

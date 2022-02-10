@@ -24,7 +24,7 @@ public class Apprenant {
 
     private Etat etat;
 
-    private int telephone;
+    private Long telephone;
 
     private String email;
 
@@ -94,11 +94,11 @@ public class Apprenant {
         this.genre = genre;
     }
 
-    public int getTelephone() {
+    public Long getTelephone() {
         return telephone;
     }
 
-    public void setTelephone(int telephone) {
+    public void setTelephone(Long telephone) {
         this.telephone = telephone;
     }
 

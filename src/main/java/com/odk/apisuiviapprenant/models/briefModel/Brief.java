@@ -80,5 +80,11 @@ public class Brief {
         this.formateur = formateur;
     }
 
+    public Rendu getRendu() {
+        return rendu;
+    }
 
+    public void setRendu(Rendu rendu) {
+        this.rendu = rendu;
+    }
 }

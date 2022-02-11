@@ -31,11 +31,13 @@ public class FormateurServiceImpl implements FormateurService{
     public Formateur authentification(String login, String motDePasse) {
         Optional<Formateur> getFormateur = formateurRepository.findFormateurByLoginAndMotDePass(login, motDePasse);
         if(getFormateur.isEmpty()){
-            throw new InvalidEntityException("Login ou mot de passe incorrect", ErrorCode.FORMATEUR_AUTHENTIFICATION_INVALID);
+            return null;
+            //throw new InvalidEntityException("Login ou mot de passe incorrect", ErrorCode.FORMATEUR_AUTHENTIFICATION_INVALID);
         }
-        if (getFormateur.get().getEtat() == Etat.Desactiver){
+        /*if (getFormateur.get().getEtat() == Etat.Desactiver){
             throw new InvalidEntityException("Votre compte a été supprimé", ErrorCode.FORMATEUR_DESACTIVE_ACCOUNT);
         }
+        */
         return getFormateur.get();
     }
 

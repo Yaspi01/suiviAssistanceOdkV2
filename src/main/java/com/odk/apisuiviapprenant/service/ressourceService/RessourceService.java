@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface RessourceService {
     Ressource addUrl(Ressource ressource);
-    Ressource addPdf();
+    Ressource addPdf(Ressource ressource);
     List<Ressource> allRessource();
     Ressource ressourceUrlById(Long id);
     void ressourceByPdf(MultipartFile file);

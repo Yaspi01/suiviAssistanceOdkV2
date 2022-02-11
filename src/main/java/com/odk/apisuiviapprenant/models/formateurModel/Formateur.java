@@ -148,4 +148,12 @@ public class Formateur {
     public void setRessource(List<Ressource> ressource) {
         this.ressource = ressource;
     }
+
+    public List<Matiere> getMatiere() {
+        return matiere;
+    }
+
+    public void setMatiere(List<Matiere> matiere) {
+        this.matiere = matiere;
+    }
 }

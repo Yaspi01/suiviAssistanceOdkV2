@@ -27,8 +27,8 @@ public class RessourceServiceImpl implements RessourceService {
     }
 
     @Override
-    public Ressource addPdf() {
-        return null;
+    public Ressource addPdf(Ressource ressource) {
+        return ressourceRepository.save(ressource);
     }
 
     @Override

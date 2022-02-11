@@ -81,11 +81,13 @@ public class ApprenantServiceImpl implements ApprenantService{
         Optional<Apprenant> connexion = apprenantRepository.findApprenantByLoginAndMotDePass(login, motDePasse);
 
         if(connexion.isEmpty()){
-            throw new InvalidEntityException("Login ou mot de passe incorrect", ErrorCode.APPRENANT_AUTHENTIFICATION_INVALID);
+            return null;
+            //throw new InvalidEntityException("Login ou mot de passe incorrect", ErrorCode.APPRENANT_AUTHENTIFICATION_INVALID);
         }
-        if(connexion.get().getEtat() == Etat.Desactiver || connexion.get().isSupprimer()){
+        /*if(connexion.get().getEtat() == Etat.Desactiver || connexion.get().isSupprimer()){
             throw new InvalidEntityException("Votre compte a été supprimé", ErrorCode.APPRENANT_DESACTIVE_ACCOUNT);
         }
+         */
         return connexion.get();
     }
 

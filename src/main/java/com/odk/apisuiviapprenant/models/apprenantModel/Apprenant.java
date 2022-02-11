@@ -3,11 +3,11 @@ package com.odk.apisuiviapprenant.models.apprenantModel;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.odk.apisuiviapprenant.Etat;
+import com.odk.apisuiviapprenant.models.authers.RessourseApprenant;
 import com.odk.apisuiviapprenant.models.briefModel.Brief;
 import com.odk.apisuiviapprenant.models.evaluationModel.Evaluation;
 import com.odk.apisuiviapprenant.models.formateurModel.Formateur;
 import com.odk.apisuiviapprenant.models.renduModel.Rendu;
-import com.odk.apisuiviapprenant.models.ressourceModel.Ressource;
 
 import javax.persistence.*;
 import java.util.List;
@@ -46,7 +46,7 @@ public class Apprenant {
 
     @JsonIgnore
     @OneToMany
-    private List<Ressource> ressource;
+    private List<RessourseApprenant> ressourseApprenants;
 
     @JsonIgnore
     @OneToMany
@@ -155,12 +155,12 @@ public class Apprenant {
         this.brief = brief;
     }
 
-    public List<Ressource> getRessource() {
-        return ressource;
+    public List<RessourseApprenant> getRessource() {
+        return ressourseApprenants;
     }
 
-    public void setRessource(List<Ressource> ressource) {
-        this.ressource = ressource;
+    public void setRessource(List<RessourseApprenant> ressourseApprenants) {
+        this.ressourseApprenants = ressourseApprenants;
     }
 
     public boolean isSupprimer() {

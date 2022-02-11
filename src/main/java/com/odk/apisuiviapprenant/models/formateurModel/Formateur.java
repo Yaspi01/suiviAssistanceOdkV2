@@ -42,9 +42,11 @@ public class Formateur {
     @JsonIgnore
     private List<Brief> brief;
 
+    @JsonIgnore
     @OneToMany
     private List<Ressource> ressource;
 
+    @JsonIgnore
     @OneToMany
     private List<Matiere> matiere;
 

@@ -29,4 +29,9 @@ public class EvaluationController {
     Evaluation evaluationById(@PathVariable("id") Long id){
         return evaluationService.evaluationById(id);
     }
+
+    @GetMapping("/evaluationByApprenant/{id}")
+    List<Evaluation> evaluationByApprenant(@PathVariable("id") Long id){
+        return evaluationService.findEvaluationByApprenant(id);
+    }
 }

@@ -27,4 +27,8 @@ public interface ApprenantRepository extends JpaRepository<Apprenant, Long> {
     //select apprenant assister
     @Query(value = "SELECT assis FROM Apprenant assis WHERE assis.assister = true")
     List<Apprenant> findApprenantByAssister(@Param("assis") boolean assis);
+
+    //select apprenant assister
+    @Query(value = "SELECT assis FROM Apprenant assis WHERE assis.assister = false")
+    List<Apprenant> findApprenantByNonAssister(@Param("assis") boolean assis);
 }

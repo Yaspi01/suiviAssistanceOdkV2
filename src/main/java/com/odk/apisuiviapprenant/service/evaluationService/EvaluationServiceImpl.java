@@ -34,4 +34,9 @@ public class EvaluationServiceImpl implements EvaluationService{
         evaluationFound.setNiveau(evaluation.getNiveau());
         return evaluationRepository.save(evaluationFound);
     }
+
+    @Override
+    public List<Evaluation> findEvaluationByApprenant(Long id) {
+        return evaluationRepository.findEvaluationByApprenant(id);
+    }
 }

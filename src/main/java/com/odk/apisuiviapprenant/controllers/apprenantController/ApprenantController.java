@@ -45,8 +45,18 @@ public class ApprenantController {
         return apprenantService.authentification(login, motDePasse);
     }
 
-    @DeleteMapping("restoreApprenant/{id}")
+    @DeleteMapping("/restoreApprenant/{id}")
     void restoreApprenant(@PathVariable("id") Long id){
         apprenantService.restaureAppre(id);
+    }
+
+    @GetMapping("/allApprenantAssister/{assis}")
+    List<Apprenant> allApprenantAssister(@PathVariable("assis")boolean assis){
+        return apprenantService.findApprenantByAssister(assis);
+    }
+
+    @GetMapping("/allApprenantNonAssister/{assis}")
+    List<Apprenant> allApprenantNonAssister(@PathVariable("assis")boolean assis){
+        return apprenantService.findApprenantNoByAssister(assis);
     }
 }

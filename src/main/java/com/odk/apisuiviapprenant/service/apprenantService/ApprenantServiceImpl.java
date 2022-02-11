@@ -96,4 +96,14 @@ public class ApprenantServiceImpl implements ApprenantService{
         apprenant.setEtat(Etat.Activer);
         apprenant.setSupprimer(false);
     }
+
+    @Override
+    public List<Apprenant> findApprenantByAssister(boolean assis) {
+        return apprenantRepository.findApprenantByAssister(assis);
+    }
+
+    @Override
+    public List<Apprenant> findApprenantNoByAssister(boolean assis) {
+        return apprenantRepository.findApprenantByNonAssister(assis);
+    }
 }

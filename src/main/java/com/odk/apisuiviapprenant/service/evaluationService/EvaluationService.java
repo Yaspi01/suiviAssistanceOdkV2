@@ -9,4 +9,5 @@ public interface EvaluationService {
     List<Evaluation> allEvaluation();
     Evaluation evaluationById(Long id);
     Evaluation updateEvaluation(Evaluation evaluation, Long id);
+    List<Evaluation> findEvaluationByApprenant(Long id);
 }

@@ -1,5 +1,6 @@
 package com.odk.apisuiviapprenant.models.matiereModel;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.odk.apisuiviapprenant.models.evaluationModel.Evaluation;
 import com.odk.apisuiviapprenant.models.formateurModel.Formateur;
 
@@ -17,6 +18,7 @@ public class Matiere {
     @ManyToOne
     private Formateur formateur;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "matiere")
     private Evaluation evaluation;
 

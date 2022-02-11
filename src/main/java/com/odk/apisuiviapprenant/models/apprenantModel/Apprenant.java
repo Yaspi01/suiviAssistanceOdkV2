@@ -1,6 +1,7 @@
 package com.odk.apisuiviapprenant.models.apprenantModel;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.odk.apisuiviapprenant.Etat;
 import com.odk.apisuiviapprenant.models.briefModel.Brief;
 import com.odk.apisuiviapprenant.models.evaluationModel.Evaluation;
@@ -39,15 +40,19 @@ public class Apprenant {
     @ManyToOne
     private Formateur formateur;
 
+    @JsonIgnore
     @OneToMany
     private List<Brief> brief;
 
+    @JsonIgnore
     @OneToMany
     private List<Ressource> ressource;
 
+    @JsonIgnore
     @OneToMany
     private List<Rendu> rendu;
 
+    @JsonIgnore
     @OneToMany
     private List<Evaluation> evaluation;
 

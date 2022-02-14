@@ -1,6 +1,7 @@
 package com.odk.apisuiviapprenant.service.apprenantService;
 
 import com.odk.apisuiviapprenant.Etat;
+import com.odk.apisuiviapprenant.Type;
 import com.odk.apisuiviapprenant.exception.ErrorCode;
 import com.odk.apisuiviapprenant.exception.InvalidEntityException;
 import com.odk.apisuiviapprenant.models.apprenantModel.Apprenant;
@@ -22,6 +23,8 @@ public class ApprenantServiceImpl implements ApprenantService{
 
     @Override
     public Apprenant addApprenant(Apprenant apprenant) {
+        apprenant.setType(Type.Apprenant);
+        apprenant.setEtat(Etat.Activer);
         List<String> errors = ApprenantValidators.validate(apprenant);
         if (!errors.isEmpty()){
             throw new InvalidEntityException("L'apprenant que vous avez saisi n'est pas valid", ErrorCode.APPRENANT_NOT_VALID, errors);

@@ -18,8 +18,8 @@ public class Matiere {
     @ManyToOne
     private Formateur formateur;
 
-    @JsonIgnore
     @OneToOne(mappedBy = "matiere")
+    @JsonIgnore
     private Evaluation evaluation;
 
     public Matiere() {

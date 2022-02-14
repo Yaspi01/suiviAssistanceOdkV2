@@ -1,6 +1,7 @@
 package com.odk.apisuiviapprenant.service.formateurService;
 
 import com.odk.apisuiviapprenant.Etat;
+import com.odk.apisuiviapprenant.Type;
 import com.odk.apisuiviapprenant.exception.ErrorCode;
 import com.odk.apisuiviapprenant.exception.InvalidEntityException;
 import com.odk.apisuiviapprenant.models.formateurModel.Formateur;
@@ -19,6 +20,8 @@ public class FormateurServiceImpl implements FormateurService{
 
     @Override
     public Formateur addFormateur(Formateur formateur) {
+        formateur.setEtat(Etat.Activer);
+        formateur.setType(Type.Formateur);
         return formateurRepository.save(formateur);
     }
 

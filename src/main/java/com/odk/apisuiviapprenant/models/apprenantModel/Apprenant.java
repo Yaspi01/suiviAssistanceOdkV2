@@ -3,6 +3,7 @@ package com.odk.apisuiviapprenant.models.apprenantModel;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.odk.apisuiviapprenant.Etat;
+import com.odk.apisuiviapprenant.Type;
 import com.odk.apisuiviapprenant.models.authers.RessourseApprenant;
 import com.odk.apisuiviapprenant.models.briefModel.Brief;
 import com.odk.apisuiviapprenant.models.evaluationModel.Evaluation;
@@ -33,6 +34,8 @@ public class Apprenant {
 
     private String motDePass;
     private String genre;
+
+    private Type type;
 
     private boolean assister = false;
     private boolean supprimer = false;
@@ -161,6 +164,38 @@ public class Apprenant {
 
     public void setRessource(List<RessourseApprenant> ressourseApprenants) {
         this.ressourseApprenants = ressourseApprenants;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
+    public List<RessourseApprenant> getRessourseApprenants() {
+        return ressourseApprenants;
+    }
+
+    public void setRessourseApprenants(List<RessourseApprenant> ressourseApprenants) {
+        this.ressourseApprenants = ressourseApprenants;
+    }
+
+    public List<Rendu> getRendu() {
+        return rendu;
+    }
+
+    public void setRendu(List<Rendu> rendu) {
+        this.rendu = rendu;
+    }
+
+    public List<Evaluation> getEvaluation() {
+        return evaluation;
+    }
+
+    public void setEvaluation(List<Evaluation> evaluation) {
+        this.evaluation = evaluation;
     }
 
     public boolean isSupprimer() {

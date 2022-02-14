@@ -1,5 +1,6 @@
 package com.odk.apisuiviapprenant.models.briefModel;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.odk.apisuiviapprenant.models.apprenantModel.Apprenant;
 import com.odk.apisuiviapprenant.models.formateurModel.Formateur;
 import com.odk.apisuiviapprenant.models.renduModel.Rendu;
@@ -28,6 +29,7 @@ public class Brief {
     private Apprenant apprenant;
 
     @OneToOne(mappedBy = "brief")
+    @JsonIgnore
     private Rendu rendu;
     public Brief() {
     }

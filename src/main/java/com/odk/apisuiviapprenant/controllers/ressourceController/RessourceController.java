@@ -1,10 +1,8 @@
 package com.odk.apisuiviapprenant.controllers.ressourceController;
 
-import com.odk.apisuiviapprenant.models.apprenantModel.Apprenant;
 import com.odk.apisuiviapprenant.models.authers.RessourseApprenant;
 import com.odk.apisuiviapprenant.models.authers.RessourseApprenantServiceImpl;
 import com.odk.apisuiviapprenant.models.authers.UploadFile;
-import com.odk.apisuiviapprenant.models.formateurModel.Formateur;
 import com.odk.apisuiviapprenant.models.ressourceModel.Ressource;
 import com.odk.apisuiviapprenant.service.ressourceService.RessourceServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

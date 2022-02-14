@@ -36,4 +36,9 @@ public class RenduServiceImpl implements RenduService{
         renduFound.setDate(rendu.getDate());
         return renduRepository.save(renduFound);
     }
+
+    @Override
+    public List<Rendu> renduByBriefAndApprenant(Long id) {
+        return renduRepository.findRenduByApprenantAndBrief(id);
+    }
 }

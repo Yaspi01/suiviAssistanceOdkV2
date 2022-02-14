@@ -61,8 +61,8 @@ public class RessourceServiceImpl implements RessourceService {
     }
 
     @Override
-    public List<Ressource> ressourceByFormateur(Formateur formateur) {
-        return ressourceRepository.ressourceByFormateur(formateur);
+    public List<Ressource> ressourceByFormateur(Long id) {
+        return ressourceRepository.ressourceByFormateur(id);
     }
 
 

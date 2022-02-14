@@ -14,6 +14,6 @@ public interface RessourceRepository extends JpaRepository<Ressource, Long> {
     @Query(value = "SELECT res FROM Ressource res WHERE res.apprenant = :apprenant")
     List<Ressource> ressourceApprenant(@Param("apprenant") Apprenant apprenant);
 
-    @Query(value = "SELECT for FROM Ressource for WHERE for.formateur = :formateur")
-    List<Ressource> ressourceByFormateur(@Param("formateur") Formateur formateur);
+    @Query(value = "SELECT for FROM Ressource for WHERE for.formateur.id = :id")
+    List<Ressource> ressourceByFormateur(@Param("id") Long id);
 }

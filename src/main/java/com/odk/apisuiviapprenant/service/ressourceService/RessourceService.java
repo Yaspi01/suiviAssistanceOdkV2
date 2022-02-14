@@ -14,7 +14,7 @@ public interface RessourceService {
     Ressource ressourceUrlById(Long id);
     void ressourceByPdf(MultipartFile file);
     List<Ressource> ressourceByApprenant(Apprenant apprenant);
-    List<Ressource> ressourceByFormateur(Formateur formateur);
+    List<Ressource> ressourceByFormateur(Long id);
 
 
 }

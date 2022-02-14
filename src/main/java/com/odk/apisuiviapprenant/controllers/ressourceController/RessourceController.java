@@ -1,6 +1,8 @@
 package com.odk.apisuiviapprenant.controllers.ressourceController;
 
 import com.odk.apisuiviapprenant.models.apprenantModel.Apprenant;
+import com.odk.apisuiviapprenant.models.authers.RessourseApprenant;
+import com.odk.apisuiviapprenant.models.authers.RessourseApprenantServiceImpl;
 import com.odk.apisuiviapprenant.models.authers.UploadFile;
 import com.odk.apisuiviapprenant.models.formateurModel.Formateur;
 import com.odk.apisuiviapprenant.models.ressourceModel.Ressource;
@@ -21,29 +23,55 @@ public class RessourceController {
     @Autowired
     RessourceServiceImpl ressourceService;
 
+    @Autowired
+    RessourseApprenantServiceImpl ressourseApprenantService;
+
     @PostMapping("/addUrl")
     Ressource addUrl(@RequestBody Ressource ressource){
         return ressourceService.addUrl(ressource);
     }
 
-    @GetMapping("/ressourceByAndApprenant")
-    List<Ressource> ressourceByAndApprenant(@RequestBody Apprenant apprenant){
-        return ressourceService.ressourceByApprenant(apprenant);
+    /*
+        Toutes ressource uploader par un apprenant
+    */
+    @GetMapping("/ressourceByApprenant/{id}")
+    List<RessourseApprenant> ressourceByApprenant(@PathVariable("id") Long id){
+        return ressourseApprenantService.ressourceApprenantByIdApprenant(id);
     }
 
-    @GetMapping("/ressourceByFormateur")
-    List<Ressource> ressourceByFormateur(@RequestBody Formateur formateur){
-        return ressourceService.ressourceByFormateur(formateur);
+    /*
+        List ressouce uploader par formateur
+    */
+    @GetMapping("/ressourceByFormateur/{id}")
+    List<Ressource> ressourceByFormateur(@PathVariable("id") Long id){
+        return ressourceService.ressourceByFormateur(id);
     }
 
-    @PostMapping("/uploadRessource")
+    /*
+        Upload ressource Formateur
+    */
+    @PostMapping("/uploadRessourceFormateur")
     @ResponseBody
-    Ressource uploadRessource(Ressource ressource, @RequestParam("file") MultipartFile file) throws IOException {
+    Ressource uploadRessourceFormateur(Ressource ressource, @RequestParam("file") MultipartFile file) throws IOException {
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         ressource.setPdf(fileName);
 
         String uploadDir = "src/main/resources/files/";
         UploadFile.saveFile(uploadDir, fileName, file);
         return ressourceService.addPdf(ressource);
+    }
+
+    /*
+        Upload des ressource apprenant
+    */
+    @PostMapping("/uploadRessource")
+    @ResponseBody
+    RessourseApprenant uploadRessource(RessourseApprenant ressourseApprenant, @RequestParam("file") MultipartFile file) throws IOException {
+        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+        ressourseApprenant.setPdf(fileName);
+
+        String uploadDir = "src/main/resources/files/";
+        UploadFile.saveFile(uploadDir, fileName, file);
+        return ressourseApprenantService.addPdf(ressourseApprenant);
     }
 }

@@ -1,6 +1,5 @@
 package com.odk.apisuiviapprenant.models.authers;
 
-import com.odk.apisuiviapprenant.models.ressourceModel.Ressource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

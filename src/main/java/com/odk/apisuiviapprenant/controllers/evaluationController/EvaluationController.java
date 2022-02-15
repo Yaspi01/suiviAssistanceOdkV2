@@ -9,28 +9,28 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/evaluation")
+@RequestMapping("/api/")
 public class EvaluationController {
 
     @Autowired
     EvaluationServiceImpl evaluationService;
 
-    @PostMapping("/addEvaluation")
+    @PostMapping("addEvaluation")
     Evaluation addEvaluation(@RequestBody Evaluation evaluation){
         return evaluationService.addEvaluation(evaluation);
     }
 
-    @GetMapping("/allEvaluation")
+    @GetMapping("allEvaluation")
     List<Evaluation> allEvaluation(){
         return evaluationService.allEvaluation();
     }
 
-    @GetMapping("/evaluationById/{id}")
+    @GetMapping("evaluationById/{id}")
     Evaluation evaluationById(@PathVariable("id") Long id){
         return evaluationService.evaluationById(id);
     }
 
-    @GetMapping("/evaluationByApprenant/{id}")
+    @GetMapping("evaluationByApprenant/{id}")
     List<Evaluation> evaluationByApprenant(@PathVariable("id") Long id){
         return evaluationService.findEvaluationByApprenant(id);
     }

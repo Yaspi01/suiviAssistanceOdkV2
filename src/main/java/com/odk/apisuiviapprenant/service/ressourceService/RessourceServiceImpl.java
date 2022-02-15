@@ -55,14 +55,16 @@ public class RessourceServiceImpl implements RessourceService {
         }
     }
 
-    @Override
-    public List<Ressource> ressourceByApprenant(Apprenant apprenant) {
-        return ressourceRepository.ressourceApprenant(apprenant);
-    }
+
 
     @Override
     public List<Ressource> ressourceByFormateur(Long id) {
         return ressourceRepository.ressourceByFormateur(id);
+    }
+
+    @Override
+    public List<Ressource> ressourceByApprenant(Long id) {
+        return ressourceRepository.ressourceByApprenant(id);
     }
 
 

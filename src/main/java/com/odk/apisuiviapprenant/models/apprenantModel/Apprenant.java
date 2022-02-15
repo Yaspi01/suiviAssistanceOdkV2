@@ -36,6 +36,7 @@ public class Apprenant {
     private String genre;
 
     private Type type;
+    private boolean alreadyLogged = false;
 
     private boolean assister = false;
     private boolean supprimer = false;
@@ -204,5 +205,13 @@ public class Apprenant {
 
     public void setSupprimer(boolean supprimer) {
         this.supprimer = supprimer;
+    }
+
+    public boolean isAlreadyLogged() {
+        return alreadyLogged;
+    }
+
+    public void setAlreadyLogged(boolean alreadyLogged) {
+        this.alreadyLogged = alreadyLogged;
     }
 }

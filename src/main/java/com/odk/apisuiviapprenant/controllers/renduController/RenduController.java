@@ -9,32 +9,32 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/rendu")
+@RequestMapping("/api/")
 public class RenduController {
 
     @Autowired
     RenduServiceImpl renduService;
 
-    @PostMapping("/addRendu")
+    @PostMapping("addRendu")
     Rendu addRendu(@RequestBody Rendu rendu){
         return renduService.addRendu(rendu);
     }
 
-    @GetMapping("/allRendu")
+    @GetMapping("allRendu")
     List<Rendu> allRendu(){
         return renduService.allRendu();
     }
 
-    @GetMapping("/renduById/{id}")
+    @GetMapping("renduById/{id}")
     Rendu renduById(@PathVariable("id") Long id){
         return renduService.renduById(id);
     }
 
-    @PutMapping("/updateRendu/{id}")
+    @PutMapping("updateRendu/{id}")
     Rendu updateRendu(@RequestBody Rendu rendu, @PathVariable("id") Long id){
         return renduService.updateRendu(rendu, id);
     }
-    @GetMapping("/renduByBriefAndApprenant/{id}")
+    @GetMapping("renduByBriefAndApprenant/{id}")
     List<Rendu> renduByBriefAndApprenant(@PathVariable("id") Long id){
         return renduService.renduByBriefAndApprenant(id);
     }

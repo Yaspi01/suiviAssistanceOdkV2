@@ -14,4 +14,6 @@ public interface ApprenantService {
     void restaureAppre(Long id);
     List<Apprenant> findApprenantByAssister(boolean assis);
     List<Apprenant> findApprenantNoByAssister(boolean assis);
+    Apprenant updatePassword(Apprenant apprenant, Long id);
+    List<Apprenant> addApprenantExcel(List<Apprenant> apprenants);
 }

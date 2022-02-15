@@ -10,28 +10,28 @@ import java.util.Optional;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/brief")
+@RequestMapping("/api/")
 public class BriefController {
 
     @Autowired
     BriefServiceImpl briefService;
 
-    @PostMapping("/ajoutBrief")
+    @PostMapping("ajoutBrief")
     Brief addBrief(@RequestBody Brief brief){
         return briefService.addBrief(brief);
     }
 
-    @GetMapping("/allBrief")
+    @GetMapping("allBrief")
     List<Brief> allBrief(){
         return briefService.allBrief();
     }
 
-    @GetMapping("/briefById/{id}")
+    @GetMapping("briefById/{id}")
     Brief briefById(@PathVariable("id")Long id){
         return briefService.briefById(id);
     }
 
-    @GetMapping("/findBriefByApprenant/{id}")
+    @GetMapping("findBriefByApprenant/{id}")
     List<Brief> findBriefByApprenant(@PathVariable("id") Long id){
         return briefService.findBriefByApprenant(id);
     }

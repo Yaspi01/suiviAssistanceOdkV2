@@ -15,7 +15,7 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/ressources")
+@RequestMapping("/api/")
 public class RessourceController {
 
     @Autowired
@@ -24,15 +24,23 @@ public class RessourceController {
     @Autowired
     RessourseApprenantServiceImpl ressourseApprenantService;
 
-    @PostMapping("/addUrl")
+    @PostMapping("addUrl")
     Ressource addUrl(@RequestBody Ressource ressource){
         return ressourceService.addUrl(ressource);
     }
 
     /*
+        Ressource apprenant
+    */
+    @PostMapping("addUrlApprenant")
+    RessourseApprenant addUrlApprenant(@RequestBody RessourseApprenant apprenant){
+        return ressourseApprenantService.addUrl(apprenant);
+    }
+
+    /*
         Toutes ressource uploader par un apprenant
     */
-    @GetMapping("/ressourceByApprenant/{id}")
+    @GetMapping("ressourceByApprenant/{id}")
     List<RessourseApprenant> ressourceByApprenant(@PathVariable("id") Long id){
         return ressourseApprenantService.ressourceApprenantByIdApprenant(id);
     }
@@ -40,7 +48,7 @@ public class RessourceController {
     /*
         List ressouce uploader par formateur
     */
-    @GetMapping("/ressourceByFormateur/{id}")
+    @GetMapping("ressourceByFormateur/{id}")
     List<Ressource> ressourceByFormateur(@PathVariable("id") Long id){
         return ressourceService.ressourceByFormateur(id);
     }
@@ -48,7 +56,7 @@ public class RessourceController {
     /*
         Upload ressource Formateur
     */
-    @PostMapping("/uploadRessourceFormateur")
+    @PostMapping("uploadRessourceFormateur")
     @ResponseBody
     Ressource uploadRessourceFormateur(Ressource ressource, @RequestParam("file") MultipartFile file) throws IOException {
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
@@ -62,7 +70,7 @@ public class RessourceController {
     /*
         Upload des ressource apprenant
     */
-    @PostMapping("/uploadRessource")
+    @PostMapping("uploadRessource")
     @ResponseBody
     RessourseApprenant uploadRessource(RessourseApprenant ressourseApprenant, @RequestParam("file") MultipartFile file) throws IOException {
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
@@ -71,5 +79,13 @@ public class RessourceController {
         String uploadDir = "src/main/resources/files/";
         UploadFile.saveFile(uploadDir, fileName, file);
         return ressourseApprenantService.addPdf(ressourseApprenant);
+    }
+
+    /*
+        Ressource par apprenant envoyer par formateur
+    */
+    @GetMapping("ressourceSendByFormateurToApprenant/{id}")
+    List<Ressource> ressourceSendByFormateurToApprenant(@PathVariable("id") Long id){
+        return ressourceService.ressourceByApprenant(id);
     }
 }

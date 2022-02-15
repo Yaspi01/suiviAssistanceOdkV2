@@ -9,23 +9,23 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/formateurs")
+@RequestMapping("/api/")
 public class FormateurController {
 
     @Autowired
     FormateurServiceImpl formateurService;
 
-    @PostMapping("/ajoutFormateur")
+    @PostMapping("ajoutFormateur")
     Formateur ajoutFormateur(@RequestBody Formateur formateur){
         return formateurService.addFormateur(formateur);
     }
 
-    @GetMapping("/allFormateur")
+    @GetMapping("allFormateur")
     List<Formateur> allFormateur(){
         return formateurService.allFormateur();
     }
 
-    @GetMapping("/login/{login}&{motDePass}")
+    @GetMapping("login/{login}&{motDePass}")
     Formateur connexion(@PathVariable("login") String login, @PathVariable("motDePass") String motDePass){
         return formateurService.authentification(login, motDePass);
     }

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -110,5 +111,30 @@ public class ApprenantServiceImpl implements ApprenantService{
     @Override
     public List<Apprenant> findApprenantNoByAssister(boolean assis) {
         return apprenantRepository.findApprenantByNonAssister(assis);
+    }
+
+    @Override
+    public Apprenant updatePassword(Apprenant apprenant, Long id) {
+        Apprenant apprenantFound = apprenantRepository.getById(id);
+        apprenantFound.setMotDePass(apprenant.getMotDePass());
+        apprenantFound.setAlreadyLogged(true);
+        return apprenantRepository.save(apprenantFound);
+    }
+
+    @Override
+    public List<Apprenant> addApprenantExcel(List<Apprenant> apprenants) {
+        List<Apprenant> list = new ArrayList<>();
+        for (int i=0;i<apprenants.size();i++){
+            Apprenant app = new Apprenant();
+            app.setPrenom(apprenants.get(i).getPrenom());
+            app.setNom(apprenants.get(i).getNom());
+            app.setEtat(Etat.Activer);
+            app.setLogin(apprenants.get(i).getLogin());
+            app.setMotDePass(apprenants.get(i).getMotDePass());
+            app.setGenre(apprenants.get(i).getGenre());
+            Apprenant ap = apprenantRepository.saveAndFlush(app);
+            list.add(ap);
+        }
+        return list;
     }
 }

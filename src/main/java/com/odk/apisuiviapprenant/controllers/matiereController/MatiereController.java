@@ -9,28 +9,28 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/matiere")
+@RequestMapping("/api/")
 public class MatiereController {
 
     @Autowired
     MatiereServiceImpl matiereService;
 
-    @PostMapping("/addMatiere")
+    @PostMapping("addMatiere")
     Matiere addMatiere(@RequestBody Matiere matiere){
         return matiereService.addMatiere(matiere);
     }
 
-    @GetMapping("/allMatiere")
+    @GetMapping("allMatiere")
     List<Matiere> allMatiere(){
         return matiereService.allMatiere();
     }
 
-    @GetMapping("/matiereById/{id}")
+    @GetMapping("matiereById/{id}")
     Matiere matiereById(@PathVariable("id") Long id){
         return matiereService.matiereById(id);
     }
 
-    @PutMapping("/updateMatiere/{id}")
+    @PutMapping("updateMatiere/{id}")
     Matiere updateMatiere(@PathVariable("id") Long id, @RequestBody Matiere matiere){
         return matiereService.updateMatiere(matiere, id);
     }

@@ -5,6 +5,7 @@ import com.odk.apisuiviapprenant.models.evaluationModel.Evaluation;
 import com.odk.apisuiviapprenant.models.formateurModel.Formateur;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Matiere {
@@ -18,9 +19,9 @@ public class Matiere {
     @ManyToOne
     private Formateur formateur;
 
-    @OneToOne(mappedBy = "matiere", orphanRemoval = true)
+    @OneToMany
     @JsonIgnore
-    private Evaluation evaluation;
+    private List<Evaluation> evaluation;
 
     public Matiere() {
     }
@@ -49,11 +50,11 @@ public class Matiere {
         this.formateur = formateur;
     }
 
-    public Evaluation getEvaluation() {
+    public List<Evaluation> getEvaluation() {
         return evaluation;
     }
 
-    public void setEvaluation(Evaluation evaluation) {
+    public void setEvaluation(List<Evaluation> evaluation) {
         this.evaluation = evaluation;
     }
 }

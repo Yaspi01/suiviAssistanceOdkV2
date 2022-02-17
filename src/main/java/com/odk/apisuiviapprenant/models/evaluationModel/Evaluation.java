@@ -1,5 +1,6 @@
 package com.odk.apisuiviapprenant.models.evaluationModel;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.odk.apisuiviapprenant.Niveau;
 import com.odk.apisuiviapprenant.models.apprenantModel.Apprenant;
 import com.odk.apisuiviapprenant.models.matiereModel.Matiere;
@@ -14,7 +15,7 @@ public class Evaluation {
     private Long id;
     private Niveau niveau;
 
-    @OneToOne
+    @ManyToOne
     private Matiere matiere;
 
     @ManyToOne

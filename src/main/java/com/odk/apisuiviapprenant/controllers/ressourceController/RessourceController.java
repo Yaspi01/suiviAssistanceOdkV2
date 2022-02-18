@@ -72,7 +72,7 @@ public class RessourceController {
     */
     @PostMapping("uploadRessource")
     @ResponseBody
-    RessourseApprenant uploadRessource(@RequestParam("data") RessourseApprenant ressourseApprenant, @RequestParam("file") MultipartFile file) throws IOException {
+    RessourseApprenant uploadRessource(RessourseApprenant ressourseApprenant, @RequestParam("file") MultipartFile file) throws IOException {
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         ressourseApprenant.setPdf(fileName);
 

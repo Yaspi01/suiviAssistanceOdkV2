@@ -23,7 +23,7 @@ public class BriefController {
 
     @PostMapping("ajoutBrief")
     @ResponseBody
-    Brief addBrief(@RequestParam("data") Brief brief, @RequestParam("file") MultipartFile file) throws IOException {
+    Brief addBrief( Brief brief, @RequestParam("file") MultipartFile file) throws IOException {
         String fileNamne = StringUtils.cleanPath(file.getOriginalFilename());
         brief.setPhoto(fileNamne);
         String uploadDir = "src/main/resources/files/";

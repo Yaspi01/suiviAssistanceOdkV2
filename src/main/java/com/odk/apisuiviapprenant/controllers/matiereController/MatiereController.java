@@ -22,7 +22,7 @@ public class MatiereController {
 
     @PostMapping("addMatiere")
     @ResponseBody
-    Matiere addMatiere(@RequestBody Matiere matiere, @RequestParam("file") MultipartFile file) throws IOException {
+    Matiere addMatiere(@RequestParam("data") Matiere matiere, @RequestParam("file") MultipartFile file) throws IOException {
         String fileNamne = StringUtils.cleanPath(file.getOriginalFilename());
         matiere.setPhoto(fileNamne);
         String uploadDir = "src/main/resources/files/";

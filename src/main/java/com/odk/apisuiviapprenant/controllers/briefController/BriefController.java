@@ -1,10 +1,15 @@
 package com.odk.apisuiviapprenant.controllers.briefController;
 
+import com.odk.apisuiviapprenant.models.authers.UploadFile;
 import com.odk.apisuiviapprenant.models.briefModel.Brief;
 import com.odk.apisuiviapprenant.service.briefService.BriefServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +22,12 @@ public class BriefController {
     BriefServiceImpl briefService;
 
     @PostMapping("ajoutBrief")
-    Brief addBrief(@RequestBody Brief brief){
+    @ResponseBody
+    Brief addBrief(@RequestBody Brief brief, @RequestParam("file") MultipartFile file) throws IOException {
+        String fileNamne = StringUtils.cleanPath(file.getOriginalFilename());
+        brief.setPhoto(fileNamne);
+        String uploadDir = "src/main/resources/files/";
+        UploadFile.saveFile(uploadDir, fileNamne, file);
         return briefService.addBrief(brief);
     }
 
@@ -36,6 +46,13 @@ public class BriefController {
         return briefService.findBriefByApprenant(id);
     }
 
+    /*
+        Pour recupere une photo en fonction de son ID
+    */
+    @GetMapping(value = "findBriefPhoto/{id}", produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE})
+    byte[] findPhoto(@PathVariable("id") Long id) throws IOException{
+        return briefService.getPhoto(id);
+    }
 
 
 }

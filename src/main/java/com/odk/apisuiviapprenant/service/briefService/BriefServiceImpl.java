@@ -5,6 +5,11 @@ import com.odk.apisuiviapprenant.repositories.briefRepository.BriefRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 @Service
@@ -36,5 +41,14 @@ public class BriefServiceImpl implements BriefService {
     @Override
     public List<Brief> findBriefByFormateur(Long id) {
         return briefRepository.findBriefByFormateur(id);
+    }
+
+    public byte[] getPhoto(Long id) throws IOException {
+        Brief brief = briefRepository.getById(id);
+        String iconPhoto = brief.getPhoto();
+        File file = new File("src/main/resources/files/"+iconPhoto);
+
+        Path path = Paths.get(file.toURI());
+        return Files.readAllBytes(path);
     }
 }

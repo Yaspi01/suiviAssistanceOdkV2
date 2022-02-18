@@ -20,6 +20,8 @@ public class Brief {
 
     private LocalDate date = LocalDate.now();
 
+    private String photo;
+
     private String description;
 
     @ManyToOne
@@ -72,6 +74,14 @@ public class Brief {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     public Formateur getFormateur() {

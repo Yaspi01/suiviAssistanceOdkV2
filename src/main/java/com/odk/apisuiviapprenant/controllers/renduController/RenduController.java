@@ -34,8 +34,8 @@ public class RenduController {
     Rendu updateRendu(@RequestBody Rendu rendu, @PathVariable("id") Long id){
         return renduService.updateRendu(rendu, id);
     }
-    @GetMapping("renduByBriefAndApprenant/{id}")
-    List<Rendu> renduByBriefAndApprenant(@PathVariable("id") Long id){
-        return renduService.renduByBriefAndApprenant(id);
+    @GetMapping("renduByBrief/{id}")
+    List<Rendu> renduByBrief(@PathVariable("id") Long id){
+        return renduService.renduByBrief(id);
     }
 }

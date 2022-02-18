@@ -16,6 +16,8 @@ public class Matiere {
 
     private String nom_matiere;
 
+    private String photo;
+
     @ManyToOne
     private Formateur formateur;
 
@@ -56,5 +58,13 @@ public class Matiere {
 
     public void setEvaluation(List<Evaluation> evaluation) {
         this.evaluation = evaluation;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }

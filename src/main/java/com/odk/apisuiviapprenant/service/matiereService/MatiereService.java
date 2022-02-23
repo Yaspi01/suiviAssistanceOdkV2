@@ -9,4 +9,5 @@ public interface MatiereService {
     List<Matiere> allMatiere();
     Matiere matiereById(Long id);
     Matiere updateMatiere(Matiere matiere, Long id);
+
 }

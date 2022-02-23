@@ -21,12 +21,9 @@ public class MatiereController {
     MatiereServiceImpl matiereService;
 
     @PostMapping("addMatiere")
-    @ResponseBody
-    Matiere addMatiere(Matiere matiere, @RequestParam("file") MultipartFile file) throws IOException {
-        String fileNamne = StringUtils.cleanPath(file.getOriginalFilename());
-        matiere.setPhoto(fileNamne);
-        String uploadDir = "src/main/resources/files/";
-        UploadFile.saveFile(uploadDir, fileNamne, file);
+
+    Matiere addMatiere(@RequestBody Matiere matiere)  {
+
         return matiereService.addMatiere(matiere);
     }
 
@@ -42,9 +39,8 @@ public class MatiereController {
 
     @PutMapping("updateMatiere/{id}")
     Matiere updateMatiere(@PathVariable("id") Long id, @RequestBody Matiere matiere){
-        return matiereService.updateMatiere(matiere, id);
+        return matiereService.updateMatiere(matiere,id);
     }
-
     /*
         Pour recupere une photo en fonction de son ID
     */

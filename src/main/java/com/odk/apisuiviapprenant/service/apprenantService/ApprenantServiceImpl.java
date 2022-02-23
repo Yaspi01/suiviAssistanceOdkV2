@@ -66,7 +66,7 @@ public class ApprenantServiceImpl implements ApprenantService{
 
     @Override
     public Apprenant updateApprenant(Apprenant apprenant, Long id) {
-        Apprenant apprenantFound = apprenantRepository.getById(id);
+        Apprenant apprenantFound = apprenantRepository.findById(id).get();
         apprenantFound.setPrenom(apprenant.getPrenom());
         apprenantFound.setNom(apprenant.getNom());
         apprenantFound.setLogin(apprenant.getLogin());
@@ -98,7 +98,7 @@ public class ApprenantServiceImpl implements ApprenantService{
     @Transactional
     @Override
     public void restaureAppre(Long id) {
-        Apprenant apprenant = apprenantRepository.getById(id);
+        Apprenant apprenant = apprenantRepository.findById(id).get();
         apprenant.setEtat(Etat.Activer);
         apprenant.setSupprimer(false);
     }
@@ -115,7 +115,7 @@ public class ApprenantServiceImpl implements ApprenantService{
 
     @Override
     public Apprenant updatePassword(Apprenant apprenant, Long id) {
-        Apprenant apprenantFound = apprenantRepository.getById(id);
+        Apprenant apprenantFound = apprenantRepository.findById(id).get();
         apprenantFound.setMotDePass(apprenant.getMotDePass());
         apprenantFound.setAlreadyLogged(true);
         return apprenantRepository.save(apprenantFound);

@@ -30,7 +30,7 @@ public class RenduServiceImpl implements RenduService{
 
     @Override
     public Rendu updateRendu(Rendu rendu, Long id) {
-        Rendu renduFound = renduRepository.getById(id);
+        Rendu renduFound = renduRepository.findById(id).get();
         renduFound.setUrl(rendu.getUrl());
         renduFound.setMessage(rendu.getMessage());
         renduFound.setDate(rendu.getDate());

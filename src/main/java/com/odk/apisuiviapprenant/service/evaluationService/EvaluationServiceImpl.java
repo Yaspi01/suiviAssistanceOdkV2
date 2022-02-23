@@ -25,12 +25,12 @@ public class EvaluationServiceImpl implements EvaluationService{
 
     @Override
     public Evaluation evaluationById(Long id) {
-        return evaluationRepository.getById(id);
+        return evaluationRepository.findById(id).get();
     }
 
     @Override
     public Evaluation updateEvaluation(Evaluation evaluation, Long id) {
-        Evaluation evaluationFound = evaluationRepository.getById(id);
+        Evaluation evaluationFound = evaluationRepository.findById(id).get();
         evaluationFound.setNiveau(evaluation.getNiveau());
         return evaluationRepository.save(evaluationFound);
     }

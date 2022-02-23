@@ -30,12 +30,12 @@ public class MatiereServiceImpl implements MatiereService{
 
     @Override
     public Matiere matiereById(Long id) {
-        return matiereRepository.getById(id);
+        return matiereRepository.findById(id).get();
     }
 
     @Override
     public Matiere updateMatiere(Matiere matiere, Long id) {
-        Matiere matiereFound = matiereRepository.getById(id);
+        Matiere matiereFound = matiereRepository.findById(id).get();
         matiereFound.setNom_matiere(matiere.getNom_matiere());
         return matiereRepository.save(matiere);
     }

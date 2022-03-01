@@ -22,13 +22,8 @@ public class BriefController {
     BriefServiceImpl briefService;
 
     @PostMapping("ajoutBrief")
-    @ResponseBody
     Brief addBrief( Brief brief, @RequestParam("file") MultipartFile file) throws IOException {
-        String fileNamne = StringUtils.cleanPath(file.getOriginalFilename());
-        brief.setPhoto(fileNamne);
-        String uploadDir = "src/main/resources/files/";
-        UploadFile.saveFile(uploadDir, fileNamne, file);
-        return briefService.addBrief(brief);
+        return briefService.addBrief(brief, file);
     }
 
     @GetMapping("allBrief")

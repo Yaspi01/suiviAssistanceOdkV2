@@ -1,9 +1,12 @@
 package com.odk.apisuiviapprenant.service.matiereService;
 
+import com.odk.apisuiviapprenant.models.authers.UploadFile;
 import com.odk.apisuiviapprenant.models.matiereModel.Matiere;
 import com.odk.apisuiviapprenant.repositories.matiereRepository.MatiereRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,8 +22,13 @@ public class MatiereServiceImpl implements MatiereService{
     MatiereRepository matiereRepository;
 
     @Override
-    public Matiere addMatiere(Matiere matiere) {
-        return matiereRepository.save(matiere);
+    public Matiere addMatiere(Matiere matiere, MultipartFile file) throws IOException{
+        String fileNamne = StringUtils.cleanPath(file.getOriginalFilename());
+        matiere.setPhoto(fileNamne);
+        Matiere mat = matiereRepository.save(matiere);
+        String uploadDir = "src/main/resources/files/"+matiere.getId();
+        UploadFile.saveFile(uploadDir, fileNamne, file);
+        return mat;
     }
 
     @Override

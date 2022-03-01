@@ -1,14 +1,17 @@
 package com.odk.apisuiviapprenant.service.ressourceService;
 
 import com.odk.apisuiviapprenant.models.apprenantModel.Apprenant;
+import com.odk.apisuiviapprenant.models.authers.UploadFile;
 import com.odk.apisuiviapprenant.models.formateurModel.Formateur;
 import com.odk.apisuiviapprenant.models.ressourceModel.Ressource;
 import com.odk.apisuiviapprenant.repositories.ressourceRepository.RessourceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -27,8 +30,13 @@ public class RessourceServiceImpl implements RessourceService {
     }
 
     @Override
-    public Ressource addPdf(Ressource ressource) {
-        return ressourceRepository.save(ressource);
+    public Ressource addPdf(Ressource ressource, MultipartFile file) throws IOException {
+        String fileNamne = StringUtils.cleanPath(file.getOriginalFilename());
+        ressource.setPdf(fileNamne);
+        Ressource res = ressourceRepository.save(ressource);
+        String uploadDir = "src/main/resources/files/"+ressource.getId();
+        UploadFile.saveFile(uploadDir, fileNamne, file);
+        return res;
     }
 
     @Override

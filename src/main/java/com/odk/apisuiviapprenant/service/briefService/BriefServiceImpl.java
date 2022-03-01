@@ -1,9 +1,13 @@
 package com.odk.apisuiviapprenant.service.briefService;
 
+import com.odk.apisuiviapprenant.models.authers.UploadFile;
 import com.odk.apisuiviapprenant.models.briefModel.Brief;
 import com.odk.apisuiviapprenant.repositories.briefRepository.BriefRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,8 +23,13 @@ public class BriefServiceImpl implements BriefService {
     BriefRepository briefRepository;
 
     @Override
-    public Brief addBrief(Brief brief) {
-        return briefRepository.save(brief);
+    public Brief addBrief(Brief brief, @RequestParam("file") MultipartFile file) throws IOException {
+        String fileNamne = StringUtils.cleanPath(file.getOriginalFilename());
+        brief.setPhoto(fileNamne);
+        Brief bf = briefRepository.save(brief);
+        String uploadDir = "src/main/resources/files/"+brief.getId();
+        UploadFile.saveFile(uploadDir, fileNamne, file);
+        return bf;
     }
 
     @Override

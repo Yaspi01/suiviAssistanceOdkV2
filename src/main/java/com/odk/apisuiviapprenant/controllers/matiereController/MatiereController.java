@@ -21,13 +21,8 @@ public class MatiereController {
     MatiereServiceImpl matiereService;
 
     @PostMapping("addMatiere")
-    @ResponseBody
     Matiere addMatiere(Matiere matiere, @RequestParam("file") MultipartFile file) throws IOException {
-        String fileNamne = StringUtils.cleanPath(file.getOriginalFilename());
-        matiere.setPhoto(fileNamne);
-        String uploadDir = "src/main/resources/files/";
-        UploadFile.saveFile(uploadDir, fileNamne, file);
-        return matiereService.addMatiere(matiere);
+        return matiereService.addMatiere(matiere, file);
     }
 
     @GetMapping("allMatiere")

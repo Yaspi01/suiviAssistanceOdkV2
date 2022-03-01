@@ -37,9 +37,8 @@ public class MatiereController {
 
     @PutMapping("updateMatiere/{id}")
     Matiere updateMatiere(@PathVariable("id") Long id, @RequestBody Matiere matiere){
-        return matiereService.updateMatiere(matiere, id);
+        return matiereService.updateMatiere(matiere,id);
     }
-
     /*
         Pour recupere une photo en fonction de son ID
     */

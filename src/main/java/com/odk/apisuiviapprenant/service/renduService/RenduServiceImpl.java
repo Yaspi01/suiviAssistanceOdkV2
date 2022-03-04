@@ -34,6 +34,8 @@ public class RenduServiceImpl implements RenduService{
         renduFound.setUrl(rendu.getUrl());
         renduFound.setMessage(rendu.getMessage());
         renduFound.setDate(rendu.getDate());
+        renduFound.setApprenant(rendu.getApprenant());
+        renduFound.setBrief(rendu.getBrief());
         return renduRepository.save(renduFound);
     }
 

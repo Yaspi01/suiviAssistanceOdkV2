@@ -5,15 +5,8 @@ import com.odk.apisuiviapprenant.service.apprenantService.ApprenantServiceImpl;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin
@@ -29,7 +22,7 @@ public class ApprenantController {
         return apprenantService.addApprenant(apprenant);
     }
 
-    @GetMapping("allAprenant")
+    @GetMapping("allApprenant")
     List<Apprenant> allAprenant(){
         return apprenantService.allAprenants();
     }
@@ -75,24 +68,10 @@ public class ApprenantController {
     }
 
     @PostMapping("addByExcel")
-    List<Apprenant> addByExcel(@RequestParam("file")MultipartFile file) throws IOException{
-        List<Apprenant> apprenant = new ArrayList<>();
-        XSSFWorkbook workbook = new XSSFWorkbook(file.getInputStream());
-        XSSFSheet workSheet = workbook.getSheetAt(0);
-        for (int index=0; index > workSheet.getPhysicalNumberOfRows(); index++){
-            if (index > 0){
-                XSSFRow row = workSheet.getRow(index);
-                Apprenant ap = new Apprenant();
-                ap.setPrenom(getCellValue(row, 0));
-                ap.setNom(getCellValue(row, 1));
-                ap.setLogin(getCellValue(row,2));
-                ap.setMotDePass(getCellValue(row,3));
-                ap.setGenre(getCellValue(row,4));
-                apprenantService.addApprenant(ap);
-            }
-        }
-        return apprenant;
+    List<Apprenant> addByExcel(@RequestBody List<Apprenant> apprenant){
+        return apprenantService.addApprenantExcel(apprenant);
     }
+
 
     private String getCellValue(Row row, int cellNo) {
         DataFormatter formatter = new DataFormatter();

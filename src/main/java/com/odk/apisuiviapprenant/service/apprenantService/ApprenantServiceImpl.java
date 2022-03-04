@@ -32,17 +32,17 @@ public class ApprenantServiceImpl implements ApprenantService{
         }
         List<Apprenant> apprenantEmail = apprenantRepository.findApprenantByEmail(apprenant.getEmail());
         if (!apprenantEmail.isEmpty()){
-            throw new InvalidEntityException("Un autre apprenant avec cette adresse email existe dejà", ErrorCode.APPRENANT_ALREADY_EXISTE, errors);
+            throw new InvalidEntityException("Un autre apprenant existe avec cette adresse Email", ErrorCode.APPRENANT_ALREADY_EXISTE, errors);
         }
 
         List<Apprenant> apprenantLogin = apprenantRepository.findApprenantByLogin(apprenant.getLogin());
         if (!apprenantLogin.isEmpty()){
-            throw new InvalidEntityException("Un autre apprenant avec ce login existe dejà", ErrorCode.APPRENANT_ALREADY_EXISTE, errors);
+            throw new InvalidEntityException("Un autre apprenant existe avec ce login", ErrorCode.APPRENANT_ALREADY_EXISTE, errors);
         }
 
         List<Apprenant> apprenantTelephone = apprenantRepository.findApprenantByTelephone(apprenant.getTelephone());
         if (!apprenantTelephone.isEmpty()){
-            throw new InvalidEntityException("Un autre apprenant avec ce numéro de téléphone existe dejà", ErrorCode.APPRENANT_ALREADY_EXISTE, errors);
+            throw new InvalidEntityException("Un autre apprenant existe avec ce numéro de téléphone", ErrorCode.APPRENANT_ALREADY_EXISTE, errors);
         }
         return apprenantRepository.save(apprenant);
     }

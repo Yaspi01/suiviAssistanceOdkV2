@@ -45,6 +45,9 @@ public class MatiereServiceImpl implements MatiereService{
     public Matiere updateMatiere(Matiere matiere, Long id) {
         Matiere matiereFound = matiereRepository.findById(id).get();
         matiereFound.setNom_matiere(matiere.getNom_matiere());
+        matiereFound.setBrief(matiere.getBrief());
+        matiereFound.setPhoto(matiere.getPhoto());
+        matiereFound.setEvaluation(matiere.getEvaluation());
         return matiereRepository.save(matiere);
     }
 

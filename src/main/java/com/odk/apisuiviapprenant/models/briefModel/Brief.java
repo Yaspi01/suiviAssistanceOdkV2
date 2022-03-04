@@ -3,6 +3,7 @@ package com.odk.apisuiviapprenant.models.briefModel;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.odk.apisuiviapprenant.models.apprenantModel.Apprenant;
 import com.odk.apisuiviapprenant.models.formateurModel.Formateur;
+import com.odk.apisuiviapprenant.models.matiereModel.Matiere;
 import com.odk.apisuiviapprenant.models.renduModel.Rendu;
 
 import javax.persistence.*;
@@ -30,9 +31,13 @@ public class Brief {
     @OneToOne
     private Apprenant apprenant;
 
-    @OneToOne(mappedBy = "brief")
+    @OneToMany(mappedBy = "brief")
     @JsonIgnore
-    private Rendu rendu;
+    private List<Rendu> rendu;
+
+    @ManyToOne
+    private Matiere matiere;
+
     public Brief() {
     }
 
@@ -92,11 +97,19 @@ public class Brief {
         this.formateur = formateur;
     }
 
-    public Rendu getRendu() {
+    public List<Rendu> getRendu() {
         return rendu;
     }
 
-    public void setRendu(Rendu rendu) {
+    public void setRendu(List<Rendu> rendu) {
         this.rendu = rendu;
+    }
+
+    public Matiere getMatiere() {
+        return matiere;
+    }
+
+    public void setMatiere(Matiere matiere) {
+        this.matiere = matiere;
     }
 }

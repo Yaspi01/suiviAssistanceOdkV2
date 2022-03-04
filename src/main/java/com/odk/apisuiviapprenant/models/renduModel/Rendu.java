@@ -20,7 +20,7 @@ public class Rendu {
     @ManyToOne
     private Apprenant apprenant;
 
-    @OneToOne
+    @ManyToOne
     private Brief brief;
 
     public Rendu() {

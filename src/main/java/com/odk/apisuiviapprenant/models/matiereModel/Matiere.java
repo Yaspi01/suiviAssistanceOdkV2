@@ -1,6 +1,7 @@
 package com.odk.apisuiviapprenant.models.matiereModel;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.odk.apisuiviapprenant.models.briefModel.Brief;
 import com.odk.apisuiviapprenant.models.evaluationModel.Evaluation;
 import com.odk.apisuiviapprenant.models.formateurModel.Formateur;
 
@@ -24,6 +25,10 @@ public class Matiere {
     @OneToMany
     @JsonIgnore
     private List<Evaluation> evaluation;
+
+    @OneToMany
+    @JsonIgnore
+    private List<Brief> brief;
 
     public Matiere() {
     }
@@ -66,5 +71,13 @@ public class Matiere {
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    public List<Brief> getBrief() {
+        return brief;
+    }
+
+    public void setBrief(List<Brief> brief) {
+        this.brief = brief;
     }
 }

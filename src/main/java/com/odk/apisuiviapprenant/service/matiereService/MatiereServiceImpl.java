@@ -51,7 +51,7 @@ public class MatiereServiceImpl implements MatiereService{
     public byte[] getPhoto(Long id) throws IOException {
         Matiere matiere = matiereRepository.getById(id);
         String icoPhoto = matiere.getPhoto();
-        File file = new File("src/main/resources/files/"+icoPhoto);
+        File file = new File("src/main/resources/files/" + matiere.getId()+"/"+icoPhoto);
         Path path = Paths.get(file.toURI());
         return Files.readAllBytes(path);
     }

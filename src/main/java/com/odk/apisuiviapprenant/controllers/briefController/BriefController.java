@@ -46,5 +46,10 @@ public class BriefController {
         return briefService.getPhoto(id);
     }
 
+    @PutMapping("updateBrief/{id}")
+    Brief updateBrief(@RequestBody Brief brief, @PathVariable("id") Long id){
+        return briefService.updateBrief(brief, id);
+    }
+
 
 }

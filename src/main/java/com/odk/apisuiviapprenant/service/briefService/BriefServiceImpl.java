@@ -47,6 +47,16 @@ public class BriefServiceImpl implements BriefService {
         return briefRepository.findBriefByApprenant(id);
     }
 
+    public Brief updateBrief(Brief brief, Long id){
+        Brief briefFound = briefRepository.findById(id).get();
+        briefFound.setDescription(brief.getDescription());
+        briefFound.setType(brief.getType());
+        briefFound.setPhoto(brief.getPhoto());
+        briefFound.setDate(brief.getDate());
+        briefFound.setFormateur(brief.getFormateur());
+        briefFound.setApprenant(brief.getApprenant());
+        return briefRepository.save(briefFound);
+    }
     @Override
     public List<Brief> findBriefByFormateur(Long id) {
         return briefRepository.findBriefByFormateur(id);
@@ -55,7 +65,7 @@ public class BriefServiceImpl implements BriefService {
     public byte[] getPhoto(Long id) throws IOException {
         Brief brief = briefRepository.getById(id);
         String iconPhoto = brief.getPhoto();
-        File file = new File("src/main/resources/files/"+iconPhoto);
+        File file = new File("src/main/resources/files/"+brief.getId() +"/"+ iconPhoto);
 
         Path path = Paths.get(file.toURI());
         return Files.readAllBytes(path);

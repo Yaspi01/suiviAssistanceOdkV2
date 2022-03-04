@@ -18,7 +18,6 @@ public class ApprenantValidators {
             errors.add("Veillez saisir une adresse email");
             errors.add("Veillez saisir un login");
             errors.add("Veillez saisir un mot de passe");
-            errors.add("Veillez donner un genre");
             return errors;
         }
 
@@ -37,10 +36,6 @@ public class ApprenantValidators {
         }
         if (!StringUtils.hasLength(apprenant.getMotDePass())){
             errors.add("Veillez saisir un mot de passe");
-        }
-        //Pour les champs null
-        if (apprenant.getGenre() == null){
-            errors.add("Veillez donner un genre");
         }
         return errors;
     }

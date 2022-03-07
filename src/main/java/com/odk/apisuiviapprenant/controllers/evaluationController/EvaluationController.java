@@ -34,4 +34,9 @@ public class EvaluationController {
     List<Evaluation> evaluationByApprenant(@PathVariable("id") Long id){
         return evaluationService.findEvaluationByApprenant(id);
     }
+
+    @PutMapping("updateEvaluation/{id}")
+    Evaluation updateEvaluation (@RequestBody Evaluation evaluation, @PathVariable("id") Long id){
+        return evaluationService.updateEvaluation(evaluation, id);
+    }
 }

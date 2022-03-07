@@ -5,7 +5,6 @@ import com.odk.apisuiviapprenant.models.briefModel.Brief;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 public class Rendu {

@@ -43,11 +43,11 @@ public class Formateur {
     private List<Brief> brief;
 
     @JsonIgnore
-    @OneToMany
+    @OneToMany(mappedBy = "formateur")
     private List<Ressource> ressource;
 
     @JsonIgnore
-    @OneToMany
+    @OneToMany(mappedBy = "formateur")
     private List<Matiere> matiere;
 
     public Formateur() {

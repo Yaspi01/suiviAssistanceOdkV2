@@ -49,15 +49,15 @@ public class Apprenant {
     private List<Brief> brief;
 
     @JsonIgnore
-    @OneToMany
+    @OneToMany(mappedBy = "apprenant")
     private List<RessourseApprenant> ressourseApprenants;
 
     @JsonIgnore
-    @OneToMany
+    @OneToMany(mappedBy = "apprenant")
     private List<Rendu> rendu;
 
     @JsonIgnore
-    @OneToMany
+    @OneToMany(mappedBy = "apprenant")
     private List<Evaluation> evaluation;
 
     public Apprenant() {

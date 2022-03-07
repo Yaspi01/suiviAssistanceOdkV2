@@ -9,4 +9,5 @@ public interface FormateurService {
     List<Formateur> allFormateur();
     Formateur authentification(String login, String motDePasse);
     Formateur formateurById(Long id);
+    Formateur updateFormateur(Formateur formateur, Long id);
 }

@@ -1,11 +1,9 @@
 package com.odk.apisuiviapprenant.controllers.matiereController;
 
-import com.odk.apisuiviapprenant.models.authers.UploadFile;
 import com.odk.apisuiviapprenant.models.matiereModel.Matiere;
 import com.odk.apisuiviapprenant.service.matiereService.MatiereServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 

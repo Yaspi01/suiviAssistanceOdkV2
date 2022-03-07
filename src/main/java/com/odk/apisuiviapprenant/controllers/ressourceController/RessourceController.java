@@ -76,4 +76,12 @@ public class RessourceController {
     List<Ressource> ressourceSendByFormateurToApprenant(@PathVariable("id") Long id){
         return ressourceService.ressourceByApprenant(id);
     }
+
+    /*
+        Update ressourece
+     */
+    @PutMapping("updateRessource/{id}")
+    Ressource updateRessource(@PathVariable("id") Long id, @RequestBody Ressource ressource){
+       return ressourceService.updateRessourse(ressource, id);
+    }
 }

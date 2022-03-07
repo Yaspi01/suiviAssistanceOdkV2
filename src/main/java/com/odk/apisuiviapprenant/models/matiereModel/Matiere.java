@@ -1,12 +1,8 @@
 package com.odk.apisuiviapprenant.models.matiereModel;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.odk.apisuiviapprenant.models.briefModel.Brief;
-import com.odk.apisuiviapprenant.models.evaluationModel.Evaluation;
 import com.odk.apisuiviapprenant.models.formateurModel.Formateur;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class Matiere {
@@ -22,13 +18,8 @@ public class Matiere {
     @ManyToOne
     private Formateur formateur;
 
-    @OneToMany
-    @JsonIgnore
-    private List<Evaluation> evaluation;
 
-    @OneToMany
-    @JsonIgnore
-    private List<Brief> brief;
+
 
     public Matiere() {
     }
@@ -57,14 +48,6 @@ public class Matiere {
         this.formateur = formateur;
     }
 
-    public List<Evaluation> getEvaluation() {
-        return evaluation;
-    }
-
-    public void setEvaluation(List<Evaluation> evaluation) {
-        this.evaluation = evaluation;
-    }
-
     public String getPhoto() {
         return photo;
     }
@@ -73,11 +56,5 @@ public class Matiere {
         this.photo = photo;
     }
 
-    public List<Brief> getBrief() {
-        return brief;
-    }
 
-    public void setBrief(List<Brief> brief) {
-        this.brief = brief;
-    }
 }

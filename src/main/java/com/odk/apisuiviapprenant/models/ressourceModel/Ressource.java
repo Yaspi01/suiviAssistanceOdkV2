@@ -4,7 +4,6 @@ import com.odk.apisuiviapprenant.models.apprenantModel.Apprenant;
 import com.odk.apisuiviapprenant.models.formateurModel.Formateur;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class Ressource {

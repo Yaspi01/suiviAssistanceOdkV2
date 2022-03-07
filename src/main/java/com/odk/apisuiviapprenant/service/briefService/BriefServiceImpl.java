@@ -70,6 +70,8 @@ public class BriefServiceImpl implements BriefService {
         briefFound.setDate(brief.getDate());
         briefFound.setFormateur(brief.getFormateur());
         briefFound.setApprenant(brief.getApprenant());
+        briefFound.setEvaluation(brief.getEvaluation());
+        briefFound.setRendu(brief.getRendu());
         return briefRepository.save(briefFound);
     }
     @Override

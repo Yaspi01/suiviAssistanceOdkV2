@@ -63,7 +63,14 @@ public class RessourceServiceImpl implements RessourceService {
         }
     }
 
-
+    public Ressource updateRessourse(Ressource ressource, Long id){
+        Ressource ressourceFound = ressourceRepository.findById(id).get();
+        ressourceFound.setPdf(ressource.getPdf());
+        ressourceFound.setLien(ressource.getLien());
+        ressourceFound.setApprenant(ressource.getApprenant());
+        ressourceFound.setFormateur(ressource.getFormateur());
+        return ressourceRepository.save(ressourceFound);
+    }
 
     @Override
     public List<Ressource> ressourceByFormateur(Long id) {

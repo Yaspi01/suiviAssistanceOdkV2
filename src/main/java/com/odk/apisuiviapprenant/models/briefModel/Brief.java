@@ -2,6 +2,7 @@ package com.odk.apisuiviapprenant.models.briefModel;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.odk.apisuiviapprenant.models.apprenantModel.Apprenant;
+import com.odk.apisuiviapprenant.models.evaluationModel.Evaluation;
 import com.odk.apisuiviapprenant.models.formateurModel.Formateur;
 import com.odk.apisuiviapprenant.models.matiereModel.Matiere;
 import com.odk.apisuiviapprenant.models.renduModel.Rendu;
@@ -36,7 +37,7 @@ public class Brief {
     private List<Rendu> rendu;
 
     @ManyToOne
-    private Matiere matiere;
+    private Evaluation evaluation;
 
     public Brief() {
     }
@@ -105,11 +106,11 @@ public class Brief {
         this.rendu = rendu;
     }
 
-    public Matiere getMatiere() {
-        return matiere;
+    public Evaluation getEvaluation() {
+        return evaluation;
     }
 
-    public void setMatiere(Matiere matiere) {
-        this.matiere = matiere;
+    public void setEvaluation(Evaluation evaluation) {
+        this.evaluation = evaluation;
     }
 }

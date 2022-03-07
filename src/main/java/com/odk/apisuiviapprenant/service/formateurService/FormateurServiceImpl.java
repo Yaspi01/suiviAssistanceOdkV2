@@ -48,4 +48,22 @@ public class FormateurServiceImpl implements FormateurService{
     public Formateur formateurById(Long id) {
         return formateurRepository.findById(id).get();
     }
+
+    @Override
+    public Formateur updateFormateur(Formateur formateur, Long id) {
+        Formateur formateurFound = formateurRepository.findById(id).get();
+        formateurFound.setNom(formateur.getNom());
+        formateurFound.setPrenom(formateur.getPrenom());
+        formateurFound.setType(formateurFound.getType());
+        formateurFound.setEtat(formateur.getEtat());
+        formateurFound.setEmail(formateur.getEmail());
+        formateurFound.setTelephone(formateur.getTelephone());
+        formateurFound.setLogin(formateur.getLogin());
+        formateurFound.setMotDePass(formateur.getMotDePass());
+        formateurFound.setApprenants(formateur.getApprenants());
+        formateurFound.setBrief(formateur.getBrief());
+        formateurFound.setRessource(formateur.getRessource());
+        formateurFound.setMatiere(formateur.getMatiere());
+        return formateurRepository.save(formateurFound);
+    }
 }

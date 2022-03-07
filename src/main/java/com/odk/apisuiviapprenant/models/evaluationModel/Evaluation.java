@@ -22,6 +22,9 @@ public class Evaluation {
     private List<Brief> brief;
 
     @ManyToOne
+    private Matiere matiere;
+
+    @ManyToOne
     private Apprenant apprenant;
 
     public Evaluation() {
@@ -57,5 +60,13 @@ public class Evaluation {
 
     public void setApprenant(Apprenant apprenant) {
         this.apprenant = apprenant;
+    }
+
+    public Matiere getMatiere() {
+        return matiere;
+    }
+
+    public void setMatiere(Matiere matiere) {
+        this.matiere = matiere;
     }
 }

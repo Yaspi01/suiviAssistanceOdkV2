@@ -1,8 +1,11 @@
 package com.odk.apisuiviapprenant.models.matiereModel;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.odk.apisuiviapprenant.models.evaluationModel.Evaluation;
 import com.odk.apisuiviapprenant.models.formateurModel.Formateur;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Matiere {
@@ -18,8 +21,9 @@ public class Matiere {
     @ManyToOne
     private Formateur formateur;
 
-
-
+    @OneToMany(mappedBy = "matiere")
+    @JsonIgnore
+    private List<Evaluation> evaluation;
 
     public Matiere() {
     }

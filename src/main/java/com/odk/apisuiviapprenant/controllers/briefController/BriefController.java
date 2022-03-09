@@ -35,6 +35,7 @@ public class BriefController {
 
     @GetMapping("findBriefByApprenant/{id}")
     List<Brief> findBriefByApprenant(@PathVariable("id") Long id){
+
         return briefService.findBriefByApprenant(id);
     }
 

@@ -36,14 +36,7 @@ public class BriefServiceImpl implements BriefService {
         Brief bf = briefRepository.save(brief);
         String uploadDir = "src/main/resources/files/"+brief.getId();
         UploadFile.saveFile(uploadDir, fileNamne, file);
-        brief.getApprenant().setAssister(true);
-        senderService.sendSimpleEmail(brief.getApprenant().getEmail(),
-                "Bonjour " + brief.getApprenant().getPrenom() + " "+
-                        brief.getApprenant().getNom() + "\n"+
-                        "Votre formateur vous a envoyer un brief sur " +brief.getType()
-                + "\n" + "Connecter vous a votre compte pour plus d'informations http://localhost:4200"
-                ,
-                brief.getType());
+
         return bf;
     }
 

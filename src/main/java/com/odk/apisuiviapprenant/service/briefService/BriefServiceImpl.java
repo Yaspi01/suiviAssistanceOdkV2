@@ -5,8 +5,6 @@ import com.odk.apisuiviapprenant.models.briefModel.Brief;
 import com.odk.apisuiviapprenant.repositories.briefRepository.BriefRepository;
 import com.odk.apisuiviapprenant.service.MailSenderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,10 +31,11 @@ public class BriefServiceImpl implements BriefService {
     public Brief addBrief(Brief brief, @RequestParam("file") MultipartFile file) throws IOException {
         String fileNamne = StringUtils.cleanPath(file.getOriginalFilename());
         brief.setPhoto(fileNamne);
-        Brief bf = briefRepository.save(brief);
-        String uploadDir = "src/main/resources/files/"+brief.getId();
-        UploadFile.saveFile(uploadDir, fileNamne, file);
         brief.getApprenant().setAssister(true);
+        Brief bf = briefRepository.save(brief);
+
+        /*String uploadDir = "src/main/resources/files/"+brief.getId();
+        UploadFile.saveFile(uploadDir, fileNamne, file);
         senderService.sendSimpleEmail(brief.getApprenant().getEmail(),
                 "Bonjour " + brief.getApprenant().getPrenom() + " "+
                         brief.getApprenant().getNom() + "\n"+
@@ -44,6 +43,7 @@ public class BriefServiceImpl implements BriefService {
                 + "\n" + "Connecter vous a votre compte pour plus d'informations http://localhost:4200"
                 ,
                 brief.getType());
+         */
         return bf;
     }
 

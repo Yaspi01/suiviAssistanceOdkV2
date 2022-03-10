@@ -21,6 +21,7 @@ public class Brief {
     private String type;
 
     private LocalDate date = LocalDate.now();
+    private LocalDate dateRendu;
 
     private String photo;
 
@@ -80,6 +81,14 @@ public class Brief {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public LocalDate getDateRendu() {
+        return dateRendu;
+    }
+
+    public void setDateRendu(LocalDate dateRendu) {
+        this.dateRendu = dateRendu;
     }
 
     public String getPhoto() {

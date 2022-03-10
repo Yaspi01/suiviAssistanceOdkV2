@@ -11,4 +11,5 @@ public interface RenduService {
     Rendu renduById(Long id);
     Rendu updateRendu(Rendu rendu, Long id);
     List<Rendu> renduByBrief(Long id);
+    List<Rendu> renduByApprenant(Long id);
 }

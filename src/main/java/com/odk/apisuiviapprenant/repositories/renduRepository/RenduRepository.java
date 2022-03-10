@@ -11,4 +11,8 @@ public interface RenduRepository extends JpaRepository<Rendu, Long> {
 
     @Query(value = "SELECT red FROM Rendu red WHERE red.brief.id = :id")
     List<Rendu> renduByBrief(@Param("id") Long id);
+
+    @Query(value = "SELECT red FROM Rendu red, Brief bf, Apprenant ap WHERE " +
+            "red.brief.id = bf.id AND red.apprenant.id =  ap.id AND ap.id= :id")
+    List<Rendu> renduByApprenant(@Param("id") Long id);
 }

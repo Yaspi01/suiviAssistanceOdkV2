@@ -36,6 +36,7 @@ public class BriefServiceImpl implements BriefService {
 
         /*String uploadDir = "src/main/resources/files/"+brief.getId();
         UploadFile.saveFile(uploadDir, fileNamne, file);
+<<<<<<< HEAD
         senderService.sendSimpleEmail(brief.getApprenant().getEmail(),
                 "Bonjour " + brief.getApprenant().getPrenom() + " "+
                         brief.getApprenant().getNom() + "\n"+
@@ -44,6 +45,9 @@ public class BriefServiceImpl implements BriefService {
                 ,
                 brief.getType());
          */
+=======
+
+>>>>>>> 2df3ff2b6d398ee45015e79e4e9c03313e2a6528
         return bf;
     }
 

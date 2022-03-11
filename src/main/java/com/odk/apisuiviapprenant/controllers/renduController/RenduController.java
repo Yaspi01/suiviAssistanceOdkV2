@@ -38,4 +38,9 @@ public class RenduController {
     List<Rendu> renduByBrief(@PathVariable("id") Long id){
         return renduService.renduByBrief(id);
     }
+
+    @GetMapping("renduByApprenant/{id}")
+    List<Rendu> renduByApprenant(@PathVariable("id") Long id){
+        return renduService.renduByApprenant(id);
+    }
 }

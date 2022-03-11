@@ -137,4 +137,11 @@ public class ApprenantServiceImpl implements ApprenantService{
         }
         return list;
     }
+
+    @Override
+    public Apprenant updateAssister(Apprenant apprenant, Long id) {
+        apprenant = apprenantRepository.findById(id).get();
+        apprenant.setAssister(true);
+        return apprenantRepository.save(apprenant);
+    }
 }

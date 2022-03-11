@@ -72,13 +72,9 @@ public class ApprenantController {
         return apprenantService.addApprenantExcel(apprenant);
     }
 
-
-    private String getCellValue(Row row, int cellNo) {
-        DataFormatter formatter = new DataFormatter();
-
-        Cell cell = row.getCell(cellNo);
-
-        return formatter.formatCellValue(cell);
+    @PutMapping("updateAssister/{id}")
+    Apprenant updateAssiter(@RequestBody Apprenant apprenant, @PathVariable("id") Long id){
+        return apprenantService.updateAssister(apprenant, id);
     }
 
 }

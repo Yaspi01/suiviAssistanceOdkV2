@@ -43,4 +43,9 @@ public class RenduServiceImpl implements RenduService{
     public List<Rendu> renduByBrief(Long id) {
         return renduRepository.renduByBrief(id);
     }
+
+    @Override
+    public List<Rendu> renduByApprenant(Long id) {
+        return renduRepository.renduByApprenant(id);
+    }
 }

@@ -1,5 +1,6 @@
 package com.odk.apisuiviapprenant.service.briefService;
 
+import com.odk.apisuiviapprenant.models.apprenantModel.Apprenant;
 import com.odk.apisuiviapprenant.models.authers.UploadFile;
 import com.odk.apisuiviapprenant.models.briefModel.Brief;
 import com.odk.apisuiviapprenant.repositories.briefRepository.BriefRepository;
@@ -19,6 +20,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BriefServiceImpl implements BriefService {
@@ -36,6 +38,8 @@ public class BriefServiceImpl implements BriefService {
         Brief bf = briefRepository.save(brief);
         String uploadDir = "src/main/resources/files/"+brief.getId();
         UploadFile.saveFile(uploadDir, fileNamne, file);
+
+
 
         return bf;
     }
@@ -55,6 +59,7 @@ public class BriefServiceImpl implements BriefService {
         return briefRepository.findBriefByApprenant(id);
     }
 
+    @Transactional
     public Brief updateBrief(Brief brief, Long id){
         Brief briefFound = briefRepository.findById(id).get();
         briefFound.setDescription(brief.getDescription());
@@ -65,8 +70,33 @@ public class BriefServiceImpl implements BriefService {
         briefFound.setApprenant(brief.getApprenant());
         briefFound.setEvaluation(brief.getEvaluation());
         briefFound.setRendu(brief.getRendu());
+        briefFound.setDateRendu(brief.getDateRendu());
+        brief.getApprenant().setAssister(true);
+
+        System.out.println(brief.getApprenant().getEmail());
+        senderService.sendSimpleEmail(brief.getApprenant().getEmail(),
+              "Bonjour " + brief.getApprenant().getPrenom() + " "+
+                    brief.getApprenant().getNom() + "\n"+
+                  "Votre formateur vous a envoyer un brief sur " +brief.getType()
+                + "\n" + "Connecter vous a votre compte pour plus d'informations http://localhost:4200"
+        ,
+        brief.getType());
+
         return briefRepository.save(briefFound);
     }
+
+    /*
+    public Brief oploadBriefPhoto(Long id , @RequestParam("file") MultipartFile file) throws IOException{
+        String fileNamne = StringUtils.cleanPath(file.getOriginalFilename());
+        Brief brief = briefRepository.findById(id).get();
+        brief.setPhoto(fileNamne);
+        String uploadDir = "src/main/resources/files/"+brief.getId();
+        UploadFile.saveFile(uploadDir, fileNamne, file);
+
+        UploadFile.saveFile(uploadDir, fileNamne, file);
+        return
+    }
+     */
     @Override
     public List<Brief> findBriefByFormateur(Long id) {
         return briefRepository.findBriefByFormateur(id);

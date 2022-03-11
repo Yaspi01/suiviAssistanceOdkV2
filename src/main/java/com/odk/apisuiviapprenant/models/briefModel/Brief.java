@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.odk.apisuiviapprenant.models.apprenantModel.Apprenant;
 import com.odk.apisuiviapprenant.models.evaluationModel.Evaluation;
 import com.odk.apisuiviapprenant.models.formateurModel.Formateur;
-import com.odk.apisuiviapprenant.models.matiereModel.Matiere;
 import com.odk.apisuiviapprenant.models.renduModel.Rendu;
 
 import javax.persistence.*;
@@ -21,6 +20,7 @@ public class Brief {
     private String type;
 
     private LocalDate date = LocalDate.now();
+    private LocalDate dateRendu;
 
     private String photo;
 
@@ -72,6 +72,14 @@ public class Brief {
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public LocalDate getDateRendu() {
+        return dateRendu;
+    }
+
+    public void setDateRendu(LocalDate dateRendu) {
+        this.dateRendu = dateRendu;
     }
 
     public String getDescription() {

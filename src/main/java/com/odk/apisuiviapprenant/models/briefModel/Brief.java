@@ -26,6 +26,7 @@ public class Brief {
     private String photo;
 
     private String description;
+    private boolean status;
 
     @ManyToOne
     private Formateur formateur;

@@ -1,9 +1,11 @@
 package com.odk.apisuiviapprenant.service.apprenantService;
 
 import com.odk.apisuiviapprenant.models.apprenantModel.Apprenant;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public interface ApprenantService {
     Apprenant addApprenant(Apprenant apprenant);
     List<Apprenant> allAprenants();

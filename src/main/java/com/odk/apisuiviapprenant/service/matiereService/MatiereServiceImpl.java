@@ -49,6 +49,7 @@ public class MatiereServiceImpl implements MatiereService{
         return matiereRepository.save(matiere);
     }
 
+    @Override
     public byte[] getPhoto(Long id) throws IOException {
         Matiere matiere = matiereRepository.getById(id);
         String icoPhoto = matiere.getPhoto();

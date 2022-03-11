@@ -2,11 +2,9 @@ package com.odk.apisuiviapprenant.controllers.ressourceController;
 
 import com.odk.apisuiviapprenant.models.authers.RessourseApprenant;
 import com.odk.apisuiviapprenant.models.authers.RessourseApprenantServiceImpl;
-import com.odk.apisuiviapprenant.models.authers.UploadFile;
 import com.odk.apisuiviapprenant.models.ressourceModel.Ressource;
-import com.odk.apisuiviapprenant.service.ressourceService.RessourceServiceImpl;
+import com.odk.apisuiviapprenant.service.ressourceService.RessourceService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -19,7 +17,7 @@ import java.util.List;
 public class RessourceController {
 
     @Autowired
-    RessourceServiceImpl ressourceService;
+    RessourceService ressourceService;
 
     @Autowired
     RessourseApprenantServiceImpl ressourseApprenantService;

@@ -1,7 +1,9 @@
 package com.odk.apisuiviapprenant.service.renduService;
 
+import com.odk.apisuiviapprenant.models.authers.Constante;
 import com.odk.apisuiviapprenant.models.renduModel.Rendu;
 import com.odk.apisuiviapprenant.repositories.renduRepository.RenduRepository;
+import com.odk.apisuiviapprenant.service.MailSenderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,8 @@ public class RenduServiceImpl implements RenduService{
 
     @Autowired
     RenduRepository renduRepository;
+    @Autowired
+    MailSenderService senderService;
 
     @Override
     public Rendu addRendu(Rendu rendu) {
@@ -36,6 +40,7 @@ public class RenduServiceImpl implements RenduService{
         renduFound.setDate(rendu.getDate());
         renduFound.setApprenant(rendu.getApprenant());
         renduFound.setBrief(rendu.getBrief());
+        renduFound.setStatus(rendu.isStatus());
         return renduRepository.save(renduFound);
     }
 
@@ -47,5 +52,12 @@ public class RenduServiceImpl implements RenduService{
     @Override
     public List<Rendu> renduByApprenant(Long id) {
         return renduRepository.renduByApprenant(id);
+    }
+
+    @Override
+    public Rendu updateRenduStatus(Rendu rendu, Long id) {
+        rendu = renduRepository.findById(id).get();
+        rendu.setStatus(true);
+        return renduRepository.save(rendu);
     }
 }

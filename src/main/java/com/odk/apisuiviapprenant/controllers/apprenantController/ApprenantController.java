@@ -1,10 +1,7 @@
 package com.odk.apisuiviapprenant.controllers.apprenantController;
 
 import com.odk.apisuiviapprenant.models.apprenantModel.Apprenant;
-import com.odk.apisuiviapprenant.service.apprenantService.ApprenantServiceImpl;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.DataFormatter;
-import org.apache.poi.ss.usermodel.Row;
+import com.odk.apisuiviapprenant.service.apprenantService.ApprenantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -15,7 +12,7 @@ import java.util.List;
 public class ApprenantController {
 
     @Autowired
-    ApprenantServiceImpl apprenantService;
+    ApprenantService apprenantService;
 
     @PostMapping("ajoutApprenant")
     Apprenant ajoutApprenant(@RequestBody Apprenant apprenant){

@@ -75,13 +75,6 @@ public class Brief {
         this.date = date;
     }
 
-    public LocalDate getDateRendu() {
-        return dateRendu;
-    }
-
-    public void setDateRendu(LocalDate dateRendu) {
-        this.dateRendu = dateRendu;
-    }
 
     public String getDescription() {
         return description;

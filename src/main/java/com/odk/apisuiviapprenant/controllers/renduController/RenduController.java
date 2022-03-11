@@ -1,7 +1,7 @@
 package com.odk.apisuiviapprenant.controllers.renduController;
 
 import com.odk.apisuiviapprenant.models.renduModel.Rendu;
-import com.odk.apisuiviapprenant.service.renduService.RenduServiceImpl;
+import com.odk.apisuiviapprenant.service.renduService.RenduService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +13,7 @@ import java.util.List;
 public class RenduController {
 
     @Autowired
-    RenduServiceImpl renduService;
+    RenduService renduService;
 
     @PostMapping("addRendu")
     Rendu addRendu(@RequestBody Rendu rendu){
@@ -42,5 +42,10 @@ public class RenduController {
     @GetMapping("renduByApprenant/{id}")
     List<Rendu> renduByApprenant(@PathVariable("id") Long id){
         return renduService.renduByApprenant(id);
+    }
+
+    @GetMapping("updateStatus/{id}")
+    Rendu updateStatus(@RequestBody Rendu rendu, @PathVariable("id") Long id){
+        return renduService.updateRendu(rendu, id);
     }
 }

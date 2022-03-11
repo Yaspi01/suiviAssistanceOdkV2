@@ -16,4 +16,5 @@ public interface ApprenantService {
     List<Apprenant> findApprenantNoByAssister(boolean assis);
     Apprenant updatePassword(Apprenant apprenant, Long id);
     List<Apprenant> addApprenantExcel(List<Apprenant> apprenants);
+    Apprenant updateAssister(Apprenant apprenant, Long id);
 }

@@ -90,6 +90,14 @@ public class Brief {
         this.description = description;
     }
 
+    public LocalDate getDateRendu() {
+        return dateRendu;
+    }
+
+    public void setDateRendu(LocalDate dateRendu) {
+        this.dateRendu = dateRendu;
+    }
+
     public String getPhoto() {
         return photo;
     }

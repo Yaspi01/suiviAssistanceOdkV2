@@ -1,5 +1,6 @@
 package com.odk.apisuiviapprenant.service.renduService;
 
+import com.odk.apisuiviapprenant.models.authers.Constante;
 import com.odk.apisuiviapprenant.models.renduModel.Rendu;
 import com.odk.apisuiviapprenant.repositories.renduRepository.RenduRepository;
 import com.odk.apisuiviapprenant.service.MailSenderService;
@@ -16,7 +17,6 @@ public class RenduServiceImpl implements RenduService{
     RenduRepository renduRepository;
     @Autowired
     MailSenderService senderService;
-
 
     @Override
     public Rendu addRendu(Rendu rendu) {

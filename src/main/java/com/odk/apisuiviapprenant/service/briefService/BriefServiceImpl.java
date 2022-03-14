@@ -2,6 +2,7 @@ package com.odk.apisuiviapprenant.service.briefService;
 
 
 import com.odk.apisuiviapprenant.models.authers.Constante;
+import com.odk.apisuiviapprenant.models.authers.UploadFile;
 import com.odk.apisuiviapprenant.models.briefModel.Brief;
 import com.odk.apisuiviapprenant.repositories.briefRepository.BriefRepository;
 import com.odk.apisuiviapprenant.service.MailSenderService;
@@ -33,8 +34,11 @@ public class BriefServiceImpl implements BriefService {
     public Brief addBrief(Brief brief, @RequestParam("file") MultipartFile file) throws IOException {
         String fileNamne = StringUtils.cleanPath(file.getOriginalFilename());
         brief.setPhoto(fileNamne);
-        brief.getApprenant().setAssister(true);
-        return briefRepository.save(brief);
+
+        Brief bf = briefRepository.save(brief);
+        String uploadDir = "src/main/resources/files/"+brief.getId();
+        UploadFile.saveFile(uploadDir, fileNamne, file);
+        return bf;
     }
 
     @Override
@@ -87,6 +91,7 @@ public class BriefServiceImpl implements BriefService {
         brief.setVus(true);
         return briefRepository.save(brief);
     }
+
 
     @Override
     public List<Brief> findBriefByFormateur(Long id) {

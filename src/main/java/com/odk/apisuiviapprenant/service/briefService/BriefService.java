@@ -19,4 +19,5 @@ public interface BriefService {
     byte[] getPhoto(Long id) throws IOException;
     Brief updateBrief(Brief brief, Long id);
     Brief updateVusBrief(Brief brief, Long id);
+
 }

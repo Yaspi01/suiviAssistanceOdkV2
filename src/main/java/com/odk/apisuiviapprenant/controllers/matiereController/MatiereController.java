@@ -1,6 +1,7 @@
 package com.odk.apisuiviapprenant.controllers.matiereController;
 
 import com.odk.apisuiviapprenant.models.matiereModel.Matiere;
+import com.odk.apisuiviapprenant.service.matiereService.MatiereService;
 import com.odk.apisuiviapprenant.service.matiereService.MatiereServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -16,7 +17,7 @@ import java.util.List;
 public class MatiereController {
 
     @Autowired
-    MatiereServiceImpl matiereService;
+    MatiereService matiereService;
 
     @PostMapping("addMatiere")
     Matiere addMatiere(Matiere matiere, @RequestParam("file") MultipartFile file) throws IOException {
@@ -41,7 +42,7 @@ public class MatiereController {
         Pour recupere une photo en fonction de son ID
     */
     @GetMapping(value = "findMatierePhoto/{id}", produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE})
-    byte[] findPhoto(@PathVariable("id") Long id) throws IOException{
+    byte[] findPhoto(@PathVariable("id") Long id) throws IOException {
         return matiereService.getPhoto(id);
     }
 }

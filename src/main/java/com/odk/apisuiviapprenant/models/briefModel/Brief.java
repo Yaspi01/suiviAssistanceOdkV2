@@ -25,6 +25,8 @@ public class Brief {
     private String photo;
 
     private String description;
+    private boolean status = false;
+    private boolean vus = false;
 
     @ManyToOne
     private Formateur formateur;
@@ -74,6 +76,15 @@ public class Brief {
         this.date = date;
     }
 
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public LocalDate getDateRendu() {
         return dateRendu;
     }
@@ -82,12 +93,20 @@ public class Brief {
         this.dateRendu = dateRendu;
     }
 
-    public String getDescription() {
-        return description;
+    public boolean isStatus() {
+        return status;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public boolean isVus() {
+        return vus;
+    }
+
+    public void setVus(boolean vus) {
+        this.vus = vus;
     }
 
     public String getPhoto() {

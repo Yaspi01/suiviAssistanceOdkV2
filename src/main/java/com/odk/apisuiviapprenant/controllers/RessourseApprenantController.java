@@ -1,7 +1,7 @@
 package com.odk.apisuiviapprenant.controllers;
 
 import com.odk.apisuiviapprenant.models.authers.RessourseApprenant;
-import com.odk.apisuiviapprenant.models.authers.RessourseApprenantServiceImpl;
+import com.odk.apisuiviapprenant.models.authers.RessourseApprenantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,7 +15,7 @@ import java.util.List;
 public class RessourseApprenantController {
 
     @Autowired
-    RessourseApprenantServiceImpl ressourseApprenantService;
+    RessourseApprenantService ressourseApprenantService;
 
     @PostMapping("/addUrl")
     RessourseApprenant addUrl(@RequestBody RessourseApprenant apprenant){

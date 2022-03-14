@@ -1,7 +1,7 @@
 package com.odk.apisuiviapprenant.controllers.evaluationController;
 
 import com.odk.apisuiviapprenant.models.evaluationModel.Evaluation;
-import com.odk.apisuiviapprenant.service.evaluationService.EvaluationServiceImpl;
+import com.odk.apisuiviapprenant.service.evaluationService.EvaluationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +13,7 @@ import java.util.List;
 public class EvaluationController {
 
     @Autowired
-    EvaluationServiceImpl evaluationService;
+    EvaluationService evaluationService;
 
     @PostMapping("addEvaluation")
     Evaluation addEvaluation(@RequestBody Evaluation evaluation){

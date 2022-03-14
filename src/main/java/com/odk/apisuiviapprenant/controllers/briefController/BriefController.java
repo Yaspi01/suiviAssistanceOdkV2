@@ -1,6 +1,7 @@
 package com.odk.apisuiviapprenant.controllers.briefController;
 
 import com.odk.apisuiviapprenant.models.briefModel.Brief;
+import com.odk.apisuiviapprenant.service.briefService.BriefService;
 import com.odk.apisuiviapprenant.service.briefService.BriefServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -16,7 +17,7 @@ import java.util.List;
 public class BriefController {
 
     @Autowired
-    BriefServiceImpl briefService;
+    BriefService briefService;
 
     @PostMapping("ajoutBrief")
     Brief addBrief( Brief brief, @RequestParam("file") MultipartFile file) throws IOException {
@@ -52,5 +53,8 @@ public class BriefController {
         return briefService.updateBrief(brief, id);
     }
 
-
+    @PutMapping("updateVusBrief/{id}")
+    Brief updateVusBrief(@RequestBody Brief brief, @PathVariable("id") Long id){
+        return briefService.updateVusBrief(brief, id);
+    }
 }

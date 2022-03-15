@@ -12,4 +12,6 @@ public interface EvaluationService {
     Evaluation evaluationById(Long id);
     Evaluation updateEvaluation(Evaluation evaluation, Long id);
     List<Evaluation> findEvaluationByApprenant(Long id);
+    List<Evaluation> findEvaluationByMatiere(Long id);
+    Evaluation updateNote(Evaluation evaluation, Long id);
 }

@@ -51,4 +51,13 @@ public class RenduServiceImpl implements RenduService{
         return renduRepository.renduByApprenant(id);
     }
 
+    @Override
+    public void updateRenduNote(Rendu rendu, Long id) {
+        rendu = renduRepository.findById(id).get();
+        if (rendu.getNote() == 15){
+            System.out.println("moyenne "+rendu.getNote());
+            rendu.getApprenant().getEvaluation();
+        }
+    }
+
 }

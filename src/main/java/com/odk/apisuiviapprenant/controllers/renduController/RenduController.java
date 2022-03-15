@@ -1,5 +1,6 @@
 package com.odk.apisuiviapprenant.controllers.renduController;
 
+import com.odk.apisuiviapprenant.models.briefModel.Brief;
 import com.odk.apisuiviapprenant.models.renduModel.Rendu;
 import com.odk.apisuiviapprenant.service.renduService.RenduService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,4 +45,8 @@ public class RenduController {
         return renduService.renduByApprenant(id);
     }
 
+    @GetMapping("updateRenduNote/{id}")
+    void updateRenduNote(@RequestBody Rendu rendu, @PathVariable("id") Long id){
+        renduService.updateRenduNote(rendu,id);
+    }
 }

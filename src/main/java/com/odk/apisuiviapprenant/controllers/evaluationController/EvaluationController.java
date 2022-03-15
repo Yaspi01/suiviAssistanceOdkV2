@@ -37,6 +37,11 @@ public class EvaluationController {
 
     @PutMapping("updateEvaluation/{id}")
     Evaluation updateEvaluation (@RequestBody Evaluation evaluation, @PathVariable("id") Long id){
-        return evaluationService.updateEvaluation(evaluation, id);
+        return evaluationService.updateNote(evaluation, id);
+    }
+
+    @GetMapping("evaluationByMatiere/{id}")
+    List<Evaluation> evaluationByMatiere(@PathVariable("id") Long id){
+        return evaluationService.findEvaluationByMatiere(id);
     }
 }

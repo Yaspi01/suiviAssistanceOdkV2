@@ -5,7 +5,9 @@ import com.odk.apisuiviapprenant.enums.Status;
 import com.odk.apisuiviapprenant.models.authers.Constante;
 import com.odk.apisuiviapprenant.models.authers.UploadFile;
 import com.odk.apisuiviapprenant.models.briefModel.Brief;
+import com.odk.apisuiviapprenant.models.evaluationModel.Evaluation;
 import com.odk.apisuiviapprenant.repositories.briefRepository.BriefRepository;
+import com.odk.apisuiviapprenant.repositories.evaluationRepository.EvaluationRepository;
 import com.odk.apisuiviapprenant.service.MailSenderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +31,9 @@ public class BriefServiceImpl implements BriefService {
     BriefRepository briefRepository;
     @Autowired
     MailSenderService senderService;
+
+    @Autowired
+    EvaluationRepository evaluationRepository;
 
     @Transactional
     @Override
@@ -100,9 +105,11 @@ public class BriefServiceImpl implements BriefService {
     @Override
     public void updateBriefNote(Brief brief, Long id) {
         brief = briefRepository.findById(id).get();
+        Evaluation evaluation = evaluationRepository.findById(id).get();
         if (brief.getNote() >= 15){
             System.out.println("moyenne "+brief.getNote());
-            System.out.println(brief.getEvaluation());
+            System.out.println("moyenne "+brief.getApprenant().getEvaluation());
+            //System.out.println(evaluation.getNiveau());
         }
         if (brief.getNote() < 10){
             System.out.println("Passable");

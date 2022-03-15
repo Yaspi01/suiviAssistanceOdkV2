@@ -15,6 +15,7 @@ public class Rendu {
     private String url;
     private LocalDate date = LocalDate.now();
     private String message;
+    private int note;
 
 
     @ManyToOne
@@ -54,6 +55,13 @@ public class Rendu {
         return message;
     }
 
+    public int getNote() {
+        return note;
+    }
+
+    public void setNote(int note) {
+        this.note = note;
+    }
 
     public void setMessage(String message) {
         this.message = message;

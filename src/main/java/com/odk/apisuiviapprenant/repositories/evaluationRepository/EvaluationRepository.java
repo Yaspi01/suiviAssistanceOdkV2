@@ -11,4 +11,7 @@ public interface EvaluationRepository extends JpaRepository<Evaluation, Long> {
 
     @Query(value = "SELECT ev FROM Evaluation ev WHERE ev.apprenant.id = :id")
     List<Evaluation> findEvaluationByApprenant(@Param("id") Long id);
+
+    @Query(value = "SELECT ev FROM Evaluation ev WHERE ev.matiere.id = :id")
+    List<Evaluation> findEvaluationByMatiere(Long id);
 }

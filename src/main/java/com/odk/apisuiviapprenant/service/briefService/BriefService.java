@@ -20,7 +20,6 @@ public interface BriefService {
     Brief updateBrief(Brief brief, Long id);
     Brief updateVusBrief(Brief brief, Long id);
     List<Brief> briefByVusAndStatus(boolean vus, Status status);
-    void updateBriefNote(Brief brief, Long id);
     Brief updateBriefStatus(Brief brief, Long id);
 
 }

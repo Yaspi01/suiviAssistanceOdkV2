@@ -102,19 +102,7 @@ public class BriefServiceImpl implements BriefService {
         return briefRepository.findBriefByVusAndStatus(vus, status);
     }
 
-    @Override
-    public void updateBriefNote(Brief brief, Long id) {
-        brief = briefRepository.findById(id).get();
-        Evaluation evaluation = evaluationRepository.findById(id).get();
-        if (brief.getNote() >= 15){
-            System.out.println("moyenne "+brief.getNote());
-            System.out.println("moyenne "+brief.getApprenant().getEvaluation());
-            //System.out.println(evaluation.getNiveau());
-        }
-        if (brief.getNote() < 10){
-            System.out.println("Passable");
-        }
-    }
+
 
     @Override
     public Brief updateBriefStatus(Brief brief, Long id) {

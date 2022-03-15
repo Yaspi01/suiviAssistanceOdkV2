@@ -28,7 +28,6 @@ public class Brief {
     private String description;
     private Status status = Status.NonFait;
     private boolean vus = false;
-    private int note;
 
     @ManyToOne
     private Formateur formateur;
@@ -119,13 +118,6 @@ public class Brief {
         this.photo = photo;
     }
 
-    public int getNote() {
-        return note;
-    }
-
-    public void setNote(int note) {
-        this.note = note;
-    }
 
     public Formateur getFormateur() {
         return formateur;

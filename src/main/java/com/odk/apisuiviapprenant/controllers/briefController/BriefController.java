@@ -64,11 +64,6 @@ public class BriefController {
     }
 
 
-    @GetMapping("updateBriefNote/{id}")
-    void updateBriefNote(@RequestBody Brief brief, @PathVariable("id") Long id){
-        briefService.updateBriefNote(brief,id);
-    }
-
 
     @PutMapping("updateBriefStatus/{id}")
     Brief updateBriefStatus(@RequestBody Brief brief, @PathVariable("id") Long id){

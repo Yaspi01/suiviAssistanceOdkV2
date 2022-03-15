@@ -1,6 +1,7 @@
 package com.odk.apisuiviapprenant.service.briefService;
 
 
+import com.odk.apisuiviapprenant.enums.Status;
 import com.odk.apisuiviapprenant.models.authers.Constante;
 import com.odk.apisuiviapprenant.models.authers.UploadFile;
 import com.odk.apisuiviapprenant.models.briefModel.Brief;
@@ -68,7 +69,6 @@ public class BriefServiceImpl implements BriefService {
         briefFound.setApprenant(brief.getApprenant());
         briefFound.setEvaluation(brief.getEvaluation());
         briefFound.setRendu(brief.getRendu());
-        briefFound.setStatus(brief.isStatus());
         briefFound.setVus(brief.isVus());
         briefFound.setDateRendu(brief.getDateRendu());
         brief.getApprenant().setAssister(true);
@@ -78,7 +78,7 @@ public class BriefServiceImpl implements BriefService {
                     brief.getApprenant().getNom() + "\n"+
                   "Votre formateur vous a envoyer un brief sur " +brief.getType()
                 + "\n" + "Connecter vous a votre compte pour plus d'informations "
-                      +Constante.URLFRONT+"user"
+                      +Constante.URLFRONT+"/user"
         ,
         brief.getType());
 
@@ -89,6 +89,30 @@ public class BriefServiceImpl implements BriefService {
     public Brief updateVusBrief(Brief brief, Long id) {
         brief = briefRepository.findById(id).get();
         brief.setVus(true);
+        return briefRepository.save(brief);
+    }
+
+    @Override
+    public List<Brief> briefByVusAndStatus(boolean vus, Status status) {
+        return briefRepository.findBriefByVusAndStatus(vus, status);
+    }
+
+    @Override
+    public void updateBriefNote(Brief brief, Long id) {
+        brief = briefRepository.findById(id).get();
+        if (brief.getNote() >= 15){
+            System.out.println("moyenne "+brief.getNote());
+            System.out.println(brief.getEvaluation());
+        }
+        if (brief.getNote() < 10){
+            System.out.println("Passable");
+        }
+    }
+
+    @Override
+    public Brief updateBriefStatus(Brief brief, Long id) {
+        brief = briefRepository.findById(id).get();
+        brief.setStatus(Status.Fait);
         return briefRepository.save(brief);
     }
 

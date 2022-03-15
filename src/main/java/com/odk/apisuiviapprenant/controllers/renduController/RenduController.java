@@ -44,8 +44,4 @@ public class RenduController {
         return renduService.renduByApprenant(id);
     }
 
-    @GetMapping("updateStatus/{id}")
-    Rendu updateStatus(@RequestBody Rendu rendu, @PathVariable("id") Long id){
-        return renduService.updateRendu(rendu, id);
-    }
 }

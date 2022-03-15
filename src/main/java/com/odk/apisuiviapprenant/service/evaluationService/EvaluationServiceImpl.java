@@ -33,6 +33,8 @@ public class EvaluationServiceImpl implements EvaluationService{
         Evaluation evaluationFound = evaluationRepository.findById(id).get();
         evaluationFound.setNiveau(evaluation.getNiveau());
         evaluationFound.setApprenant(evaluation.getApprenant());
+        evaluationFound.setMatiere(evaluationFound.getMatiere());
+        evaluationFound.setBrief(evaluation.getBrief());
         return evaluationRepository.save(evaluationFound);
     }
 

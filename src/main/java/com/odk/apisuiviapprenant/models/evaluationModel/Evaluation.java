@@ -1,7 +1,7 @@
 package com.odk.apisuiviapprenant.models.evaluationModel;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.odk.apisuiviapprenant.Niveau;
+import com.odk.apisuiviapprenant.enums.Niveau;
 import com.odk.apisuiviapprenant.models.apprenantModel.Apprenant;
 import com.odk.apisuiviapprenant.models.briefModel.Brief;
 import com.odk.apisuiviapprenant.models.matiereModel.Matiere;
@@ -16,6 +16,7 @@ public class Evaluation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Niveau niveau;
+    private int note;
 
     @OneToMany(mappedBy = "evaluation")
     @JsonIgnore
@@ -44,6 +45,14 @@ public class Evaluation {
 
     public void setNiveau(Niveau niveau) {
         this.niveau = niveau;
+    }
+
+    public int getNote() {
+        return note;
+    }
+
+    public void setNote(int note) {
+        this.note = note;
     }
 
     public List<Brief> getBrief() {

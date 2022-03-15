@@ -1,4 +1,4 @@
-package com.odk.apisuiviapprenant;
+package com.odk.apisuiviapprenant.enums;
 
 public enum Type {
     Formateur,

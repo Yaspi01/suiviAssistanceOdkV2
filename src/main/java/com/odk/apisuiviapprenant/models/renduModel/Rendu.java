@@ -15,7 +15,7 @@ public class Rendu {
     private String url;
     private LocalDate date = LocalDate.now();
     private String message;
-    private boolean status;
+
 
     @ManyToOne
     private Apprenant apprenant;
@@ -54,12 +54,6 @@ public class Rendu {
         return message;
     }
 
-    public boolean isStatus() {
-        return status;
-    }
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
 
     public void setMessage(String message) {
         this.message = message;

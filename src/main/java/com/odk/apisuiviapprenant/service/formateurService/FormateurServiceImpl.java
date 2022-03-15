@@ -1,9 +1,7 @@
 package com.odk.apisuiviapprenant.service.formateurService;
 
 import com.odk.apisuiviapprenant.Etat;
-import com.odk.apisuiviapprenant.Type;
-import com.odk.apisuiviapprenant.exception.ErrorCode;
-import com.odk.apisuiviapprenant.exception.InvalidEntityException;
+import com.odk.apisuiviapprenant.enums.Type;
 import com.odk.apisuiviapprenant.models.formateurModel.Formateur;
 import com.odk.apisuiviapprenant.repositories.formateurRepository.FormateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;

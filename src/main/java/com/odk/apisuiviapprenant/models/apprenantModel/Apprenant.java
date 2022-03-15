@@ -3,7 +3,7 @@ package com.odk.apisuiviapprenant.models.apprenantModel;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.odk.apisuiviapprenant.Etat;
-import com.odk.apisuiviapprenant.Type;
+import com.odk.apisuiviapprenant.enums.Type;
 import com.odk.apisuiviapprenant.models.authers.RessourseApprenant;
 import com.odk.apisuiviapprenant.models.briefModel.Brief;
 import com.odk.apisuiviapprenant.models.evaluationModel.Evaluation;

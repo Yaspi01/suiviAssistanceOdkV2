@@ -1,8 +1,8 @@
 package com.odk.apisuiviapprenant.service.briefService;
 
+import com.odk.apisuiviapprenant.enums.Status;
 import com.odk.apisuiviapprenant.models.briefModel.Brief;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -19,5 +19,8 @@ public interface BriefService {
     byte[] getPhoto(Long id) throws IOException;
     Brief updateBrief(Brief brief, Long id);
     Brief updateVusBrief(Brief brief, Long id);
+    List<Brief> briefByVusAndStatus(boolean vus, Status status);
+    void updateBriefNote(Brief brief, Long id);
+    Brief updateBriefStatus(Brief brief, Long id);
 
 }

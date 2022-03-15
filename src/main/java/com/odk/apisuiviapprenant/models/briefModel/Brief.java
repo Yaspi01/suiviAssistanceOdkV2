@@ -1,6 +1,7 @@
 package com.odk.apisuiviapprenant.models.briefModel;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.odk.apisuiviapprenant.enums.Status;
 import com.odk.apisuiviapprenant.models.apprenantModel.Apprenant;
 import com.odk.apisuiviapprenant.models.evaluationModel.Evaluation;
 import com.odk.apisuiviapprenant.models.formateurModel.Formateur;
@@ -25,8 +26,9 @@ public class Brief {
     private String photo;
 
     private String description;
-    private boolean status = false;
+    private Status status = Status.NonFait;
     private boolean vus = false;
+    private int note;
 
     @ManyToOne
     private Formateur formateur;
@@ -93,11 +95,11 @@ public class Brief {
         this.dateRendu = dateRendu;
     }
 
-    public boolean isStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
@@ -115,6 +117,14 @@ public class Brief {
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    public int getNote() {
+        return note;
+    }
+
+    public void setNote(int note) {
+        this.note = note;
     }
 
     public Formateur getFormateur() {

@@ -20,4 +20,9 @@ public interface BriefRepository extends JpaRepository<Brief, Long> {
     //Brief par vus et status
     @Query(value = "SELECT bf FROM Brief bf WHERE bf.vus =:vus AND bf.status =:status")
     List<Brief> findBriefByVusAndStatus(@Param("vus") boolean vus, @Param("status")Status status);
+
+    @Query(value = "SELECT bf FROM Brief bf, Apprenant ap WHERE bf.apprenant.id = ap.id AND bf.status =:status")
+    List<Brief> findBriefByApprenantAndStatus(@Param("status") Status status);
+
+    //List<Brief> findBriefByStatus(Status status);
 }

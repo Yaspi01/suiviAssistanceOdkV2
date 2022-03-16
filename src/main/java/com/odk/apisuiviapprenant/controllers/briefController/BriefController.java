@@ -63,10 +63,13 @@ public class BriefController {
         return briefService.briefByVusAndStatus(vus, status);
     }
 
-
-
     @PutMapping("updateBriefStatus/{id}")
     Brief updateBriefStatus(@RequestBody Brief brief, @PathVariable("id") Long id){
         return briefService.updateBriefStatus(brief, id);
+    }
+
+    @GetMapping("briefByApprenantAndStatus/{status}")
+    List<Brief> briefByApprenantAndStatus(@PathVariable("status") Status status){
+        return briefService.briefByApprenantAndStatus(status);
     }
 }

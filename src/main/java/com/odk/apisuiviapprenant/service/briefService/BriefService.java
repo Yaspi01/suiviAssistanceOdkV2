@@ -21,5 +21,6 @@ public interface BriefService {
     Brief updateVusBrief(Brief brief, Long id);
     List<Brief> briefByVusAndStatus(boolean vus, Status status);
     Brief updateBriefStatus(Brief brief, Long id);
+    List<Brief> briefByApprenantAndStatus(Status status);
 
 }

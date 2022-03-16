@@ -126,4 +126,9 @@ public class BriefServiceImpl implements BriefService {
         Path path = Paths.get(file.toURI());
         return Files.readAllBytes(path);
     }
+
+    @Override
+    public List<Brief> briefByApprenantAndStatus(Status status) {
+        return briefRepository.findBriefByApprenantAndStatus(status);
+    }
 }

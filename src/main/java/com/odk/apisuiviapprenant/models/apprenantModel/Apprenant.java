@@ -9,6 +9,7 @@ import com.odk.apisuiviapprenant.models.briefModel.Brief;
 import com.odk.apisuiviapprenant.models.evaluationModel.Evaluation;
 import com.odk.apisuiviapprenant.models.formateurModel.Formateur;
 import com.odk.apisuiviapprenant.models.renduModel.Rendu;
+import com.odk.apisuiviapprenant.models.ressourceModel.Ressource;
 
 import javax.persistence.*;
 import java.util.List;
@@ -51,6 +52,10 @@ public class Apprenant {
     @JsonIgnore
     @OneToMany(mappedBy = "apprenant")
     private List<RessourseApprenant> ressourseApprenants;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "apprenant")
+    private List<Ressource> ressource;
 
     @JsonIgnore
     @OneToMany(mappedBy = "apprenant")
@@ -163,7 +168,7 @@ public class Apprenant {
         return ressourseApprenants;
     }
 
-    public void setRessource(List<RessourseApprenant> ressourseApprenants) {
+    public void setRessourseApprenant(List<RessourseApprenant> ressourseApprenants) {
         this.ressourseApprenants = ressourseApprenants;
     }
 
@@ -173,6 +178,10 @@ public class Apprenant {
 
     public void setType(Type type) {
         this.type = type;
+    }
+
+    public void setRessource(List<Ressource> ressource) {
+        this.ressource = ressource;
     }
 
     public List<RessourseApprenant> getRessourseApprenants() {

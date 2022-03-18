@@ -132,6 +132,9 @@ public class ApprenantServiceImpl implements ApprenantService{
             app.setLogin(apprenants.get(i).getLogin());
             app.setMotDePass(apprenants.get(i).getMotDePass());
             app.setGenre(apprenants.get(i).getGenre());
+            app.setEmail(apprenants.get(i).getEmail());
+            app.setTelephone(apprenants.get(i).getTelephone());
+            app.setType(apprenants.get(i).getType());
             Apprenant ap = apprenantRepository.saveAndFlush(app);
             list.add(ap);
         }

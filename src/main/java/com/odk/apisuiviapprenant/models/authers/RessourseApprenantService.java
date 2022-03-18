@@ -13,4 +13,5 @@ public interface RessourseApprenantService {
     List<RessourseApprenant> allRessource();
     List<RessourseApprenant> ressourceApprenantByIdApprenant(Long id);
     RessourseApprenant updateRessourceApprenant(RessourseApprenant apprenant, Long id);
+    byte[] getUploadedRessourceByApprenant(Long id) throws IOException;
 }

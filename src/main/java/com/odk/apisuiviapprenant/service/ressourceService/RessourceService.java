@@ -17,4 +17,5 @@ public interface RessourceService {
     List<Ressource> ressourceByFormateur(Long id);
     List<Ressource> ressourceByApprenant(Long id);
     Ressource updateRessourse(Ressource ressource, Long id);
+    byte[] oneRessourceUploadedByFormateur(Long id) throws IOException;
 }

@@ -1,8 +1,6 @@
 package com.odk.apisuiviapprenant.service.ressourceService;
 
-import com.odk.apisuiviapprenant.models.apprenantModel.Apprenant;
 import com.odk.apisuiviapprenant.models.authers.UploadFile;
-import com.odk.apisuiviapprenant.models.formateurModel.Formateur;
 import com.odk.apisuiviapprenant.models.ressourceModel.Ressource;
 import com.odk.apisuiviapprenant.repositories.ressourceRepository.RessourceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +9,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -73,6 +72,16 @@ public class RessourceServiceImpl implements RessourceService {
     }
 
     @Override
+    public byte[] oneRessourceUploadedByFormateur(Long id) throws IOException {
+        Ressource ressourceByFormateur = ressourceRepository.findById(id).get();
+        String ressource = ressourceByFormateur.getPdf();
+        File file = new File("src/main/resources/files/pdf/"+ressourceByFormateur.getId()+"/"+ressource);
+
+        Path path = Paths.get(file.toURI());
+        return Files.readAllBytes(path);
+    }
+
+    @Override
     public List<Ressource> ressourceByFormateur(Long id) {
         return ressourceRepository.ressourceByFormateur(id);
     }
@@ -81,6 +90,5 @@ public class RessourceServiceImpl implements RessourceService {
     public List<Ressource> ressourceByApprenant(Long id) {
         return ressourceRepository.ressourceByApprenant(id);
     }
-
 
 }

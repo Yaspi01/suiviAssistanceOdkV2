@@ -5,6 +5,7 @@ import com.odk.apisuiviapprenant.models.authers.RessourseApprenantServiceImpl;
 import com.odk.apisuiviapprenant.models.ressourceModel.Ressource;
 import com.odk.apisuiviapprenant.service.ressourceService.RessourceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -91,4 +92,19 @@ public class RessourceController {
         return ressourseApprenantService.updateRessourceApprenant(ressource, id);
     }
 
+    /*
+        Get ressource by id uploaded par apprenant
+     */
+    @GetMapping(value = "oneRessourceUploadedByApprenant/{id}", produces = MediaType.APPLICATION_PDF_VALUE)
+    byte[] oneRessourceUploadedByApprenant(@PathVariable("id") Long id) throws IOException {
+        return ressourseApprenantService.getUploadedRessourceByApprenant(id);
+    }
+
+    /*
+        Get ressource by id uploaded par formateur to apprenant
+     */
+    @GetMapping(value = "oneRessourceUploadedByFormateur/{id}", produces = MediaType.APPLICATION_PDF_VALUE)
+    byte[] oneRessourceUploadedByFormateur(@PathVariable("id") Long id) throws IOException {
+        return ressourceService.oneRessourceUploadedByFormateur(id);
+    }
 }

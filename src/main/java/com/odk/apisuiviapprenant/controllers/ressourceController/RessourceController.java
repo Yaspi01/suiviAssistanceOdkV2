@@ -91,6 +91,13 @@ public class RessourceController {
     RessourseApprenant updateRessourceApprenant(@RequestBody RessourseApprenant ressource, @PathVariable("id") Long id){
         return ressourseApprenantService.updateRessourceApprenant(ressource, id);
     }
+    /*
+        Update ressource upload by formateur
+     */
+    @PutMapping("updateRessourceFormateur/{id}")
+    Ressource updateRessourceFormateur(@RequestBody Ressource ressource, @PathVariable("id") Long id){
+        return ressourceService.updateRessourse(ressource, id);
+    }
 
     /*
         Get ressource by id uploaded par apprenant

@@ -82,4 +82,13 @@ public class RessourceController {
     Ressource updateRessource(@PathVariable("id") Long id, @RequestBody Ressource ressource){
        return ressourceService.updateRessourse(ressource, id);
     }
+
+    /*
+        Update ressource upload by apprenant
+     */
+    @PutMapping("updateRessourceApprenant/{id}")
+    RessourseApprenant updateRessourceApprenant(@RequestBody RessourseApprenant ressource, @PathVariable("id") Long id){
+        return ressourseApprenantService.updateRessourceApprenant(ressource, id);
+    }
+
 }

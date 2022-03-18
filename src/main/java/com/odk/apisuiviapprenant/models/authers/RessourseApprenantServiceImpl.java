@@ -30,6 +30,15 @@ public class RessourseApprenantServiceImpl implements RessourseApprenantService{
     }
 
     @Override
+    public RessourseApprenant updateRessourceApprenant(RessourseApprenant apprenant, Long id){
+        RessourseApprenant apprenantFound = ressourseApprenantRepository.findById(id).get();
+        apprenantFound.setApprenant(apprenant.getApprenant());
+        apprenantFound.setPdf(apprenant.getPdf());
+        apprenantFound.setUrl(apprenant.getUrl());
+        return ressourseApprenantRepository.save(apprenantFound);
+    }
+
+    @Override
     public List<RessourseApprenant> allRessource() {
         return ressourseApprenantRepository.findAll();
     }

@@ -12,4 +12,5 @@ public interface RessourseApprenantService {
     RessourseApprenant addPdf(RessourseApprenant ressource, MultipartFile file) throws IOException;
     List<RessourseApprenant> allRessource();
     List<RessourseApprenant> ressourceApprenantByIdApprenant(Long id);
+    RessourseApprenant updateRessourceApprenant(RessourseApprenant apprenant, Long id);
 }

@@ -28,7 +28,7 @@ public class ApprenantServiceImpl implements ApprenantService{
         apprenant.setEtat(Etat.Activer);
         List<String> errors = ApprenantValidators.validate(apprenant);
         if (!errors.isEmpty()){
-            throw new InvalidEntityException("L'apprenant que vous avez saisi n'est pas valid", ErrorCode.APPRENANT_NOT_VALID, errors);
+            throw new InvalidEntityException("Veillez remplir tous les champs!", ErrorCode.APPRENANT_NOT_VALID, errors);
         }
         List<Apprenant> apprenantEmail = apprenantRepository.findApprenantByEmail(apprenant.getEmail());
         if (!apprenantEmail.isEmpty()){
@@ -67,6 +67,11 @@ public class ApprenantServiceImpl implements ApprenantService{
     @Override
     public Apprenant updateApprenant(Apprenant apprenant, Long id) {
         Apprenant apprenantFound = apprenantRepository.findById(id).get();
+
+        List<String> errors = ApprenantValidators.validate(apprenant);
+        if (!errors.isEmpty()){
+            throw new InvalidEntityException("Veillez remplir tous les champs!", ErrorCode.APPRENANT_NOT_VALID, errors);
+        }
         apprenantFound.setPrenom(apprenant.getPrenom());
         apprenantFound.setNom(apprenant.getNom());
         apprenantFound.setLogin(apprenant.getLogin());

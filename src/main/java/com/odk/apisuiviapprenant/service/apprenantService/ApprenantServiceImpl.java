@@ -152,4 +152,12 @@ public class ApprenantServiceImpl implements ApprenantService{
         apprenant.setAssister(true);
         return apprenantRepository.save(apprenant);
     }
+
+    @Override
+    public Apprenant firstLogin(Apprenant apprenant, Long id) {
+        Apprenant apprenantFound = apprenantRepository.findById(id).get();
+        apprenantFound.setMotDePass(apprenant.getMotDePass());
+        apprenantFound.setAlreadyLogged(true);
+        return apprenantRepository.save(apprenantFound);
+    }
 }

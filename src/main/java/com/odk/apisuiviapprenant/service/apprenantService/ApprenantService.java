@@ -19,4 +19,5 @@ public interface ApprenantService {
     Apprenant updatePassword(Apprenant apprenant, Long id);
     List<Apprenant> addApprenantExcel(List<Apprenant> apprenants);
     Apprenant updateAssister(Apprenant apprenant, Long id);
+    Apprenant firstLogin(Apprenant apprenant, Long id);
 }

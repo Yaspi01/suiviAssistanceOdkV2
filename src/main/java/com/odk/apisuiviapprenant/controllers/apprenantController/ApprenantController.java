@@ -74,4 +74,8 @@ public class ApprenantController {
         return apprenantService.updateAssister(apprenant, id);
     }
 
+    @PutMapping("firstLogin/{id}")
+    Apprenant firstLogin(@RequestBody Apprenant apprenant, @PathVariable("id") Long id){
+        return apprenantService.firstLogin(apprenant, id);
+    }
 }
